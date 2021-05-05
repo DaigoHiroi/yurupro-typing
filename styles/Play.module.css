@@ -1,0 +1,66 @@
+#text {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 6em;
+    font-weight: bold;
+    color: #666;
+    text-align: center;
+}
+#mean {
+    margin-top: 0px;
+    margin-bottom:10px;
+    font-size: 2em;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+#title {
+    margin-bottom: 2%;
+    text-align: center;
+    color: #4682b4;
+}
+.span {
+    transition: all 300ms 0s ease;
+    color: #00f;
+}
+.blue {
+    font-size: 0.5em;
+    color: #00f;
+}
+.start_button{
+    display: block;
+    background: #4682b4; /* 緑色 */
+    color: #fff;
+    border: solid 4px #4682b4; /* 緑色 */
+    font-size: 3em;
+    border-radius: 5px;
+    text-shadow:1px 0 5px rgb(48, 47, 47);
+    cursor: pointer;
+    cursor: hand;
+    margin-top:3%
+}
+.start_button:hover{
+    background: #3c81b9; /* 少し濃い緑色 */
+    border: solid 4px #3c81b9; /* 少し濃い緑色 */
+}
+.start_button:active{
+    background: #317fbe; /* 濃い緑色 */
+}
+#pic {
+    padding: 11px;
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 18px -4px rgba(0, 0, 0, 0.8);
+}
+
+.image {
+    padding: 11px;
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 18px -4px rgba(0, 0, 0, 0.8);
+}
+
+#image {
+    padding: 11px;
+    background-color: #FFFFFF;
+    box-shadow: 0 3px 18px -4px rgba(0, 0, 0, 0.8);
+}
+

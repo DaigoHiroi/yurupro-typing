@@ -1,5 +1,86 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+TOEIC TYPINGアプリを作成
+フロントエンド
+react.js
+Next.js
+TypeScript
+tailwindcss
+MaterialUI
 
+英単語はコースごとにマスタを持ちたい。
+簡単に修正できる仕組みが欲しい。
+まとめて編集する場合はcsvファイルとかでできると嬉しいかも.
+ゆくゆくは、ユーザーがタイピングする単語を決めて、プレイできると面白いかも。
+
+
+参考サイト
+next.js公式
+https://nextjs-ja-translation-docs.vercel.app/docs/getting-started
+nextにtypescript tailwindcssを導入する。とても参考になった。
+https://qiita.com/notakaos/items/36613850dbfc351b3735
+ヘッダーメニューまでまとめて更新されてしまう問題を解決するために参考
+ヘッダーなど、常に表示していたいコンポーネントは_app.tsxに記述。
+https://www.imatomix.com/imatomix/notes/1591872503
+無料コンポーネント集
+https://tailwindtemplates.io/cards/
+
+デスクトップで、
+npx create-next-app
+npm install next react react-dom
+
+ページはpagesをルートにする。
+
+リンクは以下のように記述
+
+画像は、puglicフォルダをルートにする。
+<img src="/images_1/logo.svg" alt="" className="logo"/>
+
+typescriptの導入
+touch tsconfig.json
+npm install --save-dev typescript @types/react @types/node
+npm run dev
+
+
+tailwindcssを導入
+npm install tailwindcss@latest postcss@latest autoprefixer@latest
+の後に、
+npx tailwindcss init
+でconfigファイルを作成
+tailwind.confin.jsを編集。
+
+navBarの導入に参考になったサイト
+https://dev.to/andrewespejo/how-to-design-a-simple-and-beautiful-navbar-using-nextjs-and-tailwindcss-26p1
+
+tailwinds公式
+色とか
+https://tailwindcss.com/docs/background-color
+
+
+簡単プログレスバー導入
+参考サイト
+https://qiita.com/kanye__east/items/66680f2c6a5929126ebd
+
+npm install nextjs-progressbar
+
+
+
+
+
+----してない（したい）
+materialUIをインストール
+公式
+https://next.material-ui.com/getting-started/installation/
+youtube動画
+https://www.youtube.com/watch?v=PMOiBn-dg6E
+
+npm install @material-ui/core@next @emotion/react @emotion/styled
+npm install @material-ui/icons
+
+事前設定
+公式
+https://next.material-ui.com/guides/server-rendering/#main-content
+
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 ## Getting Started
 
 First, run the development server:
