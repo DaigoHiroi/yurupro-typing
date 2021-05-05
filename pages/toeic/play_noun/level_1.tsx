@@ -35,8 +35,8 @@ export default function Play() {
       </Head>
 
       <div className="grid-cols-12 gap-4">
-        <h1 className="font-bold text-center text-6xl text-blue-900 pt-28">
-          Level 1 <span className="text-yellow-700 text-5xl">【Regular】</span>
+        <h1 className="font-bold text-center text-5xl text-blue-900">
+          Level 1 <span className="text-yellow-700 text-4xl">【Regular】</span>
         </h1>
 
         <p className="font-bold text-center text-2xl text-gray-500">
@@ -47,26 +47,26 @@ export default function Play() {
         <div className="text-center pt-8">
           <Image
             src="/SampleA.jpg"
-            height={300}
-            width={480}
+            height={200}
+            width={324}
             alt="Sample"
             id="pic"
           />
         </div>
         <div className="text-center grid-cols-12">
           <div className="pt-8">
-        <button onClick={buttonAlert} id="start_button" className="w-32 h-16 bg-blue-700 hover:bg-blue-800 text-white text-3xl py-2 px-4 rounded">
+        <button onClick={buttonAlert} id="start_button" className="w-28 h-10 bg-blue-700 hover:bg-blue-800 text-white text-2xl px-4 rounded">
               Start
           </button>
           </div>
-          <p id="caution" className="text-xl pt-4 font-bold text-yellow-800">※音が鳴ります。<br></br>※ログインせずに開始すると<br></br>進捗をセーブできません。</p>
+          <p id="caution" className="text-sm pt-4 font-bold text-yellow-800">※音が鳴ります。<br></br>※ログインせずに開始すると<br></br>進捗をセーブできません。</p>
           </div>
       </section>
       <section>
-      <p className="font-bold text-center text-8xl text-gray-600 pt-2" id="english_text">
+      <p className="font-bold text-center text-6xl text-gray-600 pt-1" id="english_text">
           
         </p>
-        <p className="font-bold text-center text-4xl text-gray-900 pt-6" id="japanese_text">
+        <p className="font-bold text-center text-3xl text-gray-900 pt-4" id="japanese_text">
           
         </p>
       </section>
@@ -82,43 +82,45 @@ export default function Play() {
       <section>
       <div className="grid grid-cols-12 gap-4">
         <div className="lg:col-start-4 lg:col-span-2 pl-20">
-          <p className="font-bold text-lg">
+          <p className="font-bold text-sm">
             単語数カウント
           </p>
           <p id="count_word">0</p>
           </div>
         <div className="lg:col-span-2 pl-20">
-          <p className="font-bold text-lg">
+          <p className="font-bold text-sm">
             文字数カウント
           </p>
           <p id="count_char">0</p>
           </div>
         <div className="lg:col-span-2 pl-20">
-        <p className="font-bold text-lg">
+        <p className="font-bold text-sm">
           コンテンツ数
         </p>
           <p id="count_max_word">0</p>
           </div>
           </div>
           <div className="text-center pt-8 grid-cols-12">
-          <button className="w-32 h-16 bg-green-700 hover:bg-green-700 text-white text-3xl py-2 px-4 rounded">
+          <button className="w-28 h-10 bg-green-700 hover:bg-green-700 text-white text-2xl px-4 rounded">
               Save
           </button>
           </div>
       </section>
 
       <section>
-        <div className="text-center grid-cols-12 pt-12">
-          <h1 className="mb-4 font-bold text-green-700 text-3xl pt-12">
+        <div className="text-center grid-cols-12 pt-8">
+          <h1 className="mb-4 font-bold text-green-700 text-2xl pt-12">
             アカウントを作成しよう！
           </h1>
-          <p className="mb-2 text-center">
+          <p className="text-sm mb-2 text-center">
             このタイピングサイトはアカウントを作成することで、これまでのタイピングしたデータを保存できます。
           </p>
-          <p>1分でアカウントを作成して、最大限楽しみましょう！</p>
+          <p className="text-sm mb-2 text-center">1分でアカウントを作成して、最大限楽しみましょう！</p>
           <div className="pt-6">
-          <button className="w-36 h-12 bg-blue-800 font-bold hover:bg-blue-700 text-white py-2 px-4 rounded">
+          <button className="w-36 h-10 bg-blue-800 font-bold hover:bg-blue-700 text-white py-2 px-4 rounded">
+          <div className="text-sm">
               アカウント作成
+          </div>
           </button>
           </div>
         </div>

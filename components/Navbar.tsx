@@ -10,17 +10,17 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="pb-1">
-      <nav className='flex items-center flex-wrap bg-gray-800 p-3'>
+    <div className="pb-8">
+      <nav className='flex items-center flex-wrap bg-gray-800'>
         <Link href='/'>
           <a className='inline-flex items-center p-2 mr-4 '>
           <Image
             src="/ushi.svg"
-            height={32}
-            width={32}
+            height={24}
+            width={24}
             alt="An SVG of an risu" 
             />
-            <span className='text-xl text-white font-bold uppercase tracking-wide'>
+            <span className='text-sm text-white font-bold uppercase tracking-wide'>
               Yuru-PRO Typing
             </span>
           </a>
@@ -51,37 +51,37 @@ export const Navbar = () => {
           }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
         >
           <div className='lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto'>
-          <label　className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
+          <label　className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
               GuestUser
             </label>
-            <label　className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
+            <label　className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
               単語: 12345
             </label>
-            <label　className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
+            <label　className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
               文字: 12345
             </label>
             <Link href='/'>
-              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
+              <a className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
                 Home
               </a>
             </Link>
             <Link href='/'>
-              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white'>
+              <a className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white'>
                 My page
               </a>
             </Link>
             <Link href='/'>
-              <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white'>
+              <a className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white'>
                 About us
               </a>
             </Link>
             <Link href="/login/login">
-            <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white'>
+            <a className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white'>
           ログイン
         </a>
         </Link>
         <Link href="/login/login">
-        <a className='lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center bg-indigo-600 hover:bg-indigo-700 hover:text-white'>
+        <a className='text-xs lg:inline-flex lg:w-auto w-full px-2 py-1 rounded text-white font-bold items-center justify-center bg-indigo-600 hover:bg-indigo-700 hover:text-white'>
           アカウント作成
         </a>
         </Link>
