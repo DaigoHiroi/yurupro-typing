@@ -16,9 +16,7 @@ var image_file_path = ""; //prop対象
 const vocabulary_data = [
   ["town", "町", "sampleA.jpg"],
   ["apple", "りんご", "sampleB.jpg"],
-  ["town", "まち", "sampleB.jpg"],
-  ["town", "町", "sampleA.jpg"],
-  ["town", "町", "sampleA.jpg"],
+  ["banana", "まち", "sampleB.jpg"],
   [" ", "クリア！（スペースキーで最初に戻る）", "sampleA.jpg"],
 ];
 

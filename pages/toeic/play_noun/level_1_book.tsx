@@ -11,12 +11,10 @@ export const getServerSideProps = async (context) => ({
 
 export default function Play() {
   const vocabulary_data = [
-    ["town", "町", "sampleA.jpg"],
-    ["apple", "りんご", "sampleB.jpg"],
-    ["town", "まち", "sampleB.jpg"],
-    ["town", "町", "sampleA.jpg"],
-    ["town", "町", "sampleA.jpg"],
-    [" ", "クリア！（スペースキーで最初に戻る）", "sampleA.jpg"],
+    [" ", "This is the first page.", "/sampleA.jpg"],
+    ["apple", "りんご", "/apple.png"],
+    ["banana", "ばなな", "/banana.png"],
+    ["melon", "メロン", "/melon.png"],
   ];
 
   const [count, setCount] = useState(0);
@@ -25,20 +23,52 @@ export default function Play() {
     const [fruit, setFruit] = useState('banana');
     const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
 
-  const buttonAlert = () => {
-    {//createText();
-    }
-    document.getElementById("start_button").style.display = "none";
-    document.getElementById("caution").style.display = "none";
-    document.getElementById("english_text").textContent = "town";
-    document.getElementById("japanese_text").textContent = "町";
+    const clickNext = () => {
+      if (vocabulary_data.length === count + 1){
+        setCount(0);
+        speakNextEnglish();
+      }else{
+        setCount(count + 1);
+        speakNextEnglish();
+      };
+    };
+    const clickBefore = () => {
+      if (count === 0){
+        setCount(vocabulary_data.length - 1);
+        speakBeforeEnglish();
+      }else{
+        setCount(count - 1);
+        speakBeforeEnglish();
+      };
+    };
 
-    const speech = new SpeechSynthesisUtterance();
-    speech.lang = "en-US";
-    speechSynthesis.cancel();
-    speech.text = "town";
-    speechSynthesis.speak(speech);
-  }
+    const clickSpeak = () => {
+      const speech = new SpeechSynthesisUtterance();
+      speech.lang = "en-US";
+      speechSynthesis.cancel();
+      speech.text = vocabulary_data[count][0];
+      speechSynthesis.speak(speech);
+    };
+
+    const speakNextEnglish = () => {
+      const speech = new SpeechSynthesisUtterance();
+      speech.lang = "en-US";
+      speechSynthesis.cancel();
+      if (!(vocabulary_data.length === count + 1)){
+      speech.text = vocabulary_data[count + 1][0];
+      speechSynthesis.speak(speech);
+      }
+    };
+
+    const speakBeforeEnglish = () => {
+      const speech = new SpeechSynthesisUtterance();
+      speech.lang = "en-US";
+      speechSynthesis.cancel();
+      if (!(count === 0)){
+      speech.text = vocabulary_data[count - 1][0];
+      speechSynthesis.speak(speech);
+      }
+    };
 
   return (
     <>
@@ -61,7 +91,7 @@ export default function Play() {
       <section>
         <div className="text-center pt-8">
           <Image
-            src="/SampleA.jpg"
+            src={vocabulary_data[count][2]}
             height={200}
             width={324}
             alt="Sample"
@@ -69,64 +99,26 @@ export default function Play() {
           />
         </div>
         <div className="text-center grid-cols-12">
-          <div className="pt-8">
-        <button onClick={buttonAlert} id="start_button" className="w-28 h-10 bg-blue-700 hover:bg-blue-800 text-white text-2xl px-4 rounded">
-              Start
-          </button>
-          </div>
-          <p id="caution" className="text-sm pt-4 font-bold text-yellow-800">※音が鳴ります。<br></br>※ログインせずに開始すると<br></br>進捗をセーブできません。</p>
-          </div>
-      </section>
-      <section>
       <p className="font-bold text-center text-6xl text-gray-600 pt-1" id="english_text">
-          
+      {vocabulary_data[count][0]}
         </p>
         <p className="font-bold text-center text-3xl text-gray-900 pt-4" id="japanese_text">
-          
+        {vocabulary_data[count][1]}
         </p>
-        <div>
-      <p>You clicked {count} times</p>
-      <p>{vocabulary_data[count][0]}</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
+      <p>-[ {count} ]-</p>
+      <button onClick={clickBefore} className="w-28 h-10 bg-green-700 hover:bg-green-800 text-white text-2xl px-4 rounded">
+        Before
       </button>
+      <button onClick={clickSpeak} className="w-28 h-10 bg-yellow-700 hover:bg-yellow-800 text-white text-2xl px-4 rounded">
+        Speak
+      </button>
+
+      <button onClick={clickNext} className="w-28 h-10 bg-blue-700 hover:bg-blue-800 text-white text-2xl px-4 rounded">
+        Next
+      </button>
+
+
     </div>
-      </section>
-
-      <section>
-      <div className="text-center pt-8 grid-cols-12">
-          <progress id="myProgress" value="0" max="100">
-            0%
-          </progress>
-        </div>
-      </section>
-
-      <section>
-      <div className="grid grid-cols-12 gap-4">
-        <div className="lg:col-start-4 lg:col-span-2 pl-20">
-          <p className="font-bold text-sm">
-            単語数カウント
-          </p>
-          <p id="count_word">0</p>
-          </div>
-        <div className="lg:col-span-2 pl-20">
-          <p className="font-bold text-sm">
-            文字数カウント
-          </p>
-          <p id="count_char">0</p>
-          </div>
-        <div className="lg:col-span-2 pl-20">
-        <p className="font-bold text-sm">
-          コンテンツ数
-        </p>
-          <p id="count_max_word">0</p>
-          </div>
-          </div>
-          <div className="text-center pt-8 grid-cols-12">
-          <button className="w-28 h-10 bg-green-700 hover:bg-green-700 text-white text-2xl px-4 rounded">
-              Save
-          </button>
-          </div>
       </section>
 
       <section>
