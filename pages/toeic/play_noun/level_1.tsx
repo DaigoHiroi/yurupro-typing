@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React from 'react';
+import React, { useState } from 'react';
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -10,6 +10,21 @@ export const getServerSideProps = async (context) => ({
 });
 
 export default function Play() {
+  const vocabulary_data = [
+    ["town", "町", "sampleA.jpg"],
+    ["apple", "りんご", "sampleB.jpg"],
+    ["town", "まち", "sampleB.jpg"],
+    ["town", "町", "sampleA.jpg"],
+    ["town", "町", "sampleA.jpg"],
+    [" ", "クリア！（スペースキーで最初に戻る）", "sampleA.jpg"],
+  ];
+
+  const [count, setCount] = useState(0);
+    // Declare multiple state variables!
+    const [age, setAge] = useState(42);
+    const [fruit, setFruit] = useState('banana');
+    const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+
   const buttonAlert = () => {
     {//createText();
     }
@@ -69,6 +84,13 @@ export default function Play() {
         <p className="font-bold text-center text-3xl text-gray-900 pt-4" id="japanese_text">
           
         </p>
+        <div>
+      <p>You clicked {count} times</p>
+      <p>{vocabulary_data[count][0]}</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
       </section>
 
       <section>
