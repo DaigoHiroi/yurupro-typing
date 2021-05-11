@@ -27,13 +27,14 @@ const Menu = (props) => {
         <p className="font-bold text-center text-xl text-gray-500">
           { props.title }
         </p>
+        </div>
 
         <section>
           <h2 className="font-bold text-center text-2xl text-gray-600 pt-10 pb-2">
             Level 1
           </h2>
           <div className="grid grid-cols-12 gap-0.5">
-            <div className="lg:col-start-5 lg:col-span-1 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
+            <div className="lg:col-start-4 lg:col-span-1 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
             <Link href="/toeic/play_noun/level_1">
               <a>
                 <div className="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500">
@@ -128,6 +129,58 @@ const Menu = (props) => {
                     </p>
                     <p className="text-xs text-black dark:text-gray-100 text-justify font-semibold">
                       無制限
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </Link>
+          </div>
+
+        <div className="lg:col-span-1 md:col-span-3 sm:col-span-2">
+            <Link href="/toeic/play_noun/level_1_noun_book">
+              <a>
+                <div className="bg-gray-100 border-black dark:bg-black bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-gray-500 dark:hover:bg-gray-800 hover:border-transparent | transition-colors duration-500">
+                  <div className="w-8 h-8 object-cover p-1">
+                    <Image
+                      src="/book.svg"
+                      height={32}
+                      width={32}
+                      alt="単語帳"
+                      className="w-16 h-16 object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <p className="text-xs text-gray-900 dark:text-gray-300 font-bold">
+                      Book
+                    </p>
+                    <p className="text-xs text-black dark:text-gray-100 text-justify font-semibold">
+                      単語帳
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </Link>
+          </div>
+          
+          <div className="lg:col-span-1 md:col-span-3 sm:col-span-2">
+            <Link href="/first-post">
+              <a>
+                <div className="bg-gray-100 border-blue-900 dark:bg-blue-900 bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-blue-700 dark:hover:bg-blue-700 hover:border-transparent | transition-colors duration-500">
+                  <div className="w-8 h-8 object-cover p-1">
+                    <Image
+                      src="/list.svg"
+                      height={32}
+                      width={32}
+                      alt="単語一覧"
+                      className="w-16 h-16 object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <p className="text-xs text-blue-900 dark:text-blue-900 font-bold">
+                      List
+                    </p>
+                    <p className="text-xs text-black dark:text-gray-100 text-justify font-semibold">
+                      一覧
                     </p>
                   </div>
                 </div>
@@ -463,27 +516,7 @@ const Menu = (props) => {
           </div>
           </div>
         </section>
-
-        <section>
-          <div className={styles.main}>
-            <h1 className="mb-4 font-bold text-green-700 text-2xl pt-6">
-              アカウントを作成しよう！
-            </h1>
-            <p className="mb-2 text-center">
-              このタイピングサイトはアカウントを作成することで、これまでのタイピングしたデータを保存できます。
-            </p>
-            <p>1分でアカウントを作成して、最大限楽しみましょう！</p>
-            <div className="pt-6">
-              <button className="w-26 h-12 bg-blue-800 font-bold hover:bg-blue-700 text-white py-2 px-4 rounded">
-                <div className="text-sm">
-                アカウント作成
-                </div>
-              </button>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
+        </div>
   );
 }
 

@@ -14,7 +14,7 @@ const Account = (props) => {
         </p>
         <p>1分でアカウントを作成して、最大限楽しみましょう！</p>
         <div className="pt-6">
-          <button className="w-26 h-12 bg-blue-800 font-bold hover:bg-blue-700 text-white py-2 px-4 rounded">
+          <button className="w-26 h-10 bg-blue-800 font-bold hover:bg-blue-700 text-white py-2 px-4 rounded">
             <div className="text-sm">アカウント作成</div>
           </button>
         </div>

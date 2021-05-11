@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
+import Account from "components/notice/account";
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -137,7 +138,6 @@ export default function Play() {
                 <div className="text-lg font-bold">Speak</div>
               </button>
             </div>
-
             <div className="lg:col-span-2  md:col-span-2 sm:col-span-2">
               <button
                 onClick={clickNext}
@@ -151,22 +151,7 @@ export default function Play() {
       </section>
 
       <section>
-        <div className="text-center grid-cols-12 pt-8">
-          <h1 className="mb-4 font-bold text-green-700 text-2xl pt-12">
-            アカウントを作成しよう！
-          </h1>
-          <p className="text-sm mb-2 text-center">
-            このタイピングサイトはアカウントを作成することで、これまでのタイピングしたデータを保存できます。
-          </p>
-          <p className="text-sm mb-2 text-center">
-            1分でアカウントを作成して、最大限楽しみましょう！
-          </p>
-          <div className="pt-6">
-            <button className="w-36 h-10 bg-blue-800 font-bold hover:bg-blue-700 text-white py-2 px-4 rounded">
-              <div className="text-sm">アカウント作成</div>
-            </button>
-          </div>
-        </div>
+      <Account />
       </section>
 
       {
