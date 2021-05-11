@@ -36,7 +36,7 @@ export default function Home() {
           </div>
           <div className={styles.grid}>
           <div className="grid lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 grid-cols-2 gap-4">
-            <Link href="/toeic/menus/noun">
+            <Link href="/toeic/menus/noun_menu">
               <a>
                 <div className="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500">
                   <div className="w-16 h-16 object-cover p-1">
