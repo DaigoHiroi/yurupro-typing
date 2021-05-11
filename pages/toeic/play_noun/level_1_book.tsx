@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -11,64 +11,70 @@ export const getServerSideProps = async (context) => ({
 
 export default function Play() {
   const vocabulary_data = [
-    [" ", "This is the first page.", "/sampleA.jpg"],
+    ["This is the first page.", "This is the first page.", "/sampleA.jpg"],
     ["apple", "りんご", "/apple.png"],
     ["banana", "ばなな", "/banana.png"],
     ["melon", "メロン", "/melon.png"],
   ];
 
   const [count, setCount] = useState(0);
-    // Declare multiple state variables!
-    const [age, setAge] = useState(42);
-    const [fruit, setFruit] = useState('banana');
-    const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  // Declare multiple state variables!
+  const [age, setAge] = useState(42);
+  const [fruit, setFruit] = useState("banana");
+  const [todos, setTodos] = useState([{ text: "Learn Hooks" }]);
 
-    const clickNext = () => {
-      if (vocabulary_data.length === count + 1){
-        setCount(0);
-        speakNextEnglish();
-      }else{
-        setCount(count + 1);
-        speakNextEnglish();
-      };
-    };
-    const clickBefore = () => {
-      if (count === 0){
-        setCount(vocabulary_data.length - 1);
-        speakBeforeEnglish();
-      }else{
-        setCount(count - 1);
-        speakBeforeEnglish();
-      };
-    };
+  const clickNext = () => {
+    if (vocabulary_data.length === count + 1) {
+      setCount(0);
+      speakNextEnglish();
+    } else {
+      setCount(count + 1);
+      speakNextEnglish();
+    }
+  };
+  const clickBefore = () => {
+    if (count === 0) {
+      setCount(vocabulary_data.length - 1);
+      speakBeforeEnglish();
+    } else {
+      setCount(count - 1);
+      speakBeforeEnglish();
+    }
+  };
 
-    const clickSpeak = () => {
-      const speech = new SpeechSynthesisUtterance();
-      speech.lang = "en-US";
-      speechSynthesis.cancel();
-      speech.text = vocabulary_data[count][0];
-      speechSynthesis.speak(speech);
-    };
+  const clickSpeak = () => {
+    const speech = new SpeechSynthesisUtterance();
+    speech.lang = "en-US";
+    speechSynthesis.cancel();
+    speech.text = vocabulary_data[count][0];
+    speechSynthesis.speak(speech);
+  };
 
-    const speakNextEnglish = () => {
-      const speech = new SpeechSynthesisUtterance();
-      speech.lang = "en-US";
-      speechSynthesis.cancel();
-      if (!(vocabulary_data.length === count + 1)){
+  const speakNextEnglish = () => {
+    const speech = new SpeechSynthesisUtterance();
+    speech.lang = "en-US";
+    speechSynthesis.cancel();
+    if (!(vocabulary_data.length === count + 1)) {
       speech.text = vocabulary_data[count + 1][0];
       speechSynthesis.speak(speech);
-      }
-    };
+    } else {
+      speech.text = vocabulary_data[0][0];
+      speechSynthesis.speak(speech);
+    }
+  };
 
-    const speakBeforeEnglish = () => {
-      const speech = new SpeechSynthesisUtterance();
-      speech.lang = "en-US";
-      speechSynthesis.cancel();
-      if (!(count === 0)){
+  const speakBeforeEnglish = () => {
+    const speech = new SpeechSynthesisUtterance();
+    speech.lang = "en-US";
+    speechSynthesis.cancel();
+    if (!(count === 0)) {
       speech.text = vocabulary_data[count - 1][0];
       speechSynthesis.speak(speech);
-      }
-    };
+    } else {
+      speech.text = vocabulary_data[vocabulary_data.length - 1][0];
+      speechSynthesis.speak(speech);
+    }
+  };
 
   return (
     <>
@@ -98,27 +104,50 @@ export default function Play() {
             id="pic"
           />
         </div>
-        <div className="text-center grid-cols-12">
-      <p className="font-bold text-center text-6xl text-gray-600 pt-1" id="english_text">
-      {vocabulary_data[count][0]}
-        </p>
-        <p className="font-bold text-center text-3xl text-gray-900 pt-4" id="japanese_text">
-        {vocabulary_data[count][1]}
-        </p>
-      <p>-[ {count} ]-</p>
-      <button onClick={clickBefore} className="w-28 h-10 bg-green-700 hover:bg-green-800 text-white text-2xl px-4 rounded">
-        Before
-      </button>
-      <button onClick={clickSpeak} className="w-28 h-10 bg-yellow-700 hover:bg-yellow-800 text-white text-2xl px-4 rounded">
-        Speak
-      </button>
+        <div className="text-center">
+          <p
+            className="font-bold text-center text-6xl text-gray-600 pt-1"
+            id="english_text"
+          >
+            {vocabulary_data[count][0]}
+          </p>
+          <p
+            className="font-bold text-center text-3xl text-gray-900 pt-4"
+            id="japanese_text"
+          >
+            {vocabulary_data[count][1]}
+          </p>
+          <div className="pt-3">
+            <p>-[ {count} ]-</p>
+          </div>
+          <div className="grid  grid-cols-12 pt-3">
+            <div className="lg:col-start-4 lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
+              <button
+                onClick={clickBefore}
+                className="w-28 h-10 bg-green-700 hover:bg-green-800 text-white text-2xl px-4 rounded"
+              >
+                <div className="text-lg font-bold">←Before</div>
+              </button>
+            </div>
+            <div className="lg:col-span-2  md:col-span-2 sm:col-span-2">
+              <button
+                onClick={clickSpeak}
+                className="w-28 h-10 bg-yellow-700 hover:bg-yellow-800 text-white text-2xl px-4 rounded"
+              >
+                <div className="text-lg font-bold">Speak</div>
+              </button>
+            </div>
 
-      <button onClick={clickNext} className="w-28 h-10 bg-blue-700 hover:bg-blue-800 text-white text-2xl px-4 rounded">
-        Next
-      </button>
-
-
-    </div>
+            <div className="lg:col-span-2  md:col-span-2 sm:col-span-2">
+              <button
+                onClick={clickNext}
+                className="w-28 h-10 bg-blue-700 hover:bg-blue-800 text-white text-2xl px-4 rounded"
+              >
+                <div className="text-lg font-bold">Next→</div>
+              </button>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section>
@@ -129,18 +158,19 @@ export default function Play() {
           <p className="text-sm mb-2 text-center">
             このタイピングサイトはアカウントを作成することで、これまでのタイピングしたデータを保存できます。
           </p>
-          <p className="text-sm mb-2 text-center">1分でアカウントを作成して、最大限楽しみましょう！</p>
+          <p className="text-sm mb-2 text-center">
+            1分でアカウントを作成して、最大限楽しみましょう！
+          </p>
           <div className="pt-6">
-          <button className="w-36 h-10 bg-blue-800 font-bold hover:bg-blue-700 text-white py-2 px-4 rounded">
-          <div className="text-sm">
-              アカウント作成
-          </div>
-          </button>
+            <button className="w-36 h-10 bg-blue-800 font-bold hover:bg-blue-700 text-white py-2 px-4 rounded">
+              <div className="text-sm">アカウント作成</div>
+            </button>
           </div>
         </div>
       </section>
 
-      {//<script type="text/javascript" src="/static/play.js"></script>
+      {
+        //<script type="text/javascript" src="/static/play.js"></script>
       }
     </>
   );
