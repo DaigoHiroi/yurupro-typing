@@ -32,13 +32,13 @@ export default function Play() {
         if (vocabulary_data.length === cnt + 1) {
           cnt = 0;
           setCount(0);
-          speakNextEnglish();
+          speakEnglish();
           spanText();
         }else {
         cnt = cnt + 1;
-        setCount(cnt);
-        speakNextEnglish();
+        speakEnglish();
         spanText();
+        setCount(cnt);
         }
       }
       window.onkeydown = function (event) {
@@ -55,11 +55,22 @@ export default function Play() {
     document.addEventListener("keydown", escFunction, false);
   }, []);
 
+  const moveNext = () => {
+    if (vocabulary_data.length === count + 1) {
+      cnt = 0;
+      setCount(0);
+      speakNextEnglish();
+    } else {
+      cnt = cnt + 1;
+      setCount(cnt);
+      speakNextEnglish();
+    }
+  };
+
   const clickStart = () => {
     startFlg=true;
-    cnt = cnt + 1;
-    setCount(cnt);
-    speakNextEnglish();
+    moveNext();
+    speakEnglish();
     spanText();
     document.getElementById("start_button").style.display = "none";
   };
@@ -74,25 +85,25 @@ export default function Play() {
     });
   };
 
-  const speakNextEnglish = () => {
-    const speech = new SpeechSynthesisUtterance();
-    speech.lang = "en-US";
-    speechSynthesis.cancel();
-    if (!(vocabulary_data.length === count + 1)) {
-      speech.text = vocabulary_data[cnt][0];
-      speechSynthesis.speak(speech);
-    } else {
-      //speech.text = vocabulary_data[0][0];
-      //speechSynthesis.speak(speech);
-    }
-  };
-
-  const speakButton = () => {
+  const speakEnglish = () => {
     const speech = new SpeechSynthesisUtterance();
     speech.lang = "en-US";
     speechSynthesis.cancel();
     speech.text = vocabulary_data[count][0];
     speechSynthesis.speak(speech);
+  };
+
+  const speakNextEnglish = () => {
+    const speech = new SpeechSynthesisUtterance();
+    speech.lang = "en-US";
+    speechSynthesis.cancel();
+    if (!(vocabulary_data.length === count + 1)) {
+      speech.text = vocabulary_data[count + 1][0];
+      speechSynthesis.speak(speech);
+    } else {
+      speech.text = vocabulary_data[0][0];
+      speechSynthesis.speak(speech);
+    }
   };
 
   return (
@@ -140,25 +151,16 @@ export default function Play() {
             <p>-[ {count} ]-</p>
           </div>
 
-          <div className="text-center pt-4">
-            <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
+          <div className="grid  grid-cols-12 pt-3">
+            <div className="lg:col-start-4 lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
               <button
                 onClick={clickStart}
-                className="w-28 h-10 bg-yellow-700 hover:bg-yellow-800 text-white text-2xl px-4 rounded"
+                className="w-28 h-10 bg-green-700 hover:bg-green-800 text-white text-2xl px-4 rounded"
                 id ="start_button"
               >
                 <div className="text-lg font-bold">Start</div>
               </button>
             </div>
-
-            <button
-                onClick={speakButton}
-                className="w-28 h-10 bg-yellow-700 hover:bg-yellow-800 text-white text-2xl px-4 rounded"
-                id ="start_button"
-              >
-                <div className="text-lg font-bold">speak</div>
-              </button>
-
 
           </div>
         </div>
