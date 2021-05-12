@@ -109,7 +109,6 @@ const Menu = (props) => {
               </a>
             </Link>
             </div>
-
             <div className="lg:col-span-1 md:col-span-3 sm:col-span-2">
             <Link href="/first-post">
               <a>
@@ -135,11 +134,10 @@ const Menu = (props) => {
               </a>
             </Link>
           </div>
-
         <div className="lg:col-span-1 md:col-span-3 sm:col-span-2">
-            <Link href="/toeic/play_noun/level_1_noun_book">
+            <Link href="/toeic/play_noun/level1_book">
               <a>
-              <div className="bg-gray-100 border-black dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-gray-400 dark:hover:bg-gray-600 hover:border-transparent | transition-colors duration-500">
+              <div className="bg-gray-100 border-black dark:bg-black bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-gray-400 dark:hover:bg-gray-400 hover:border-transparent | transition-colors duration-500">
                   <div className="w-8 h-8 object-cover p-1">
                     <Image
                       src="/book.svg"
@@ -161,11 +159,10 @@ const Menu = (props) => {
               </a>
             </Link>
           </div>
-          
           <div className="lg:col-span-1 md:col-span-3 sm:col-span-2">
             <Link href="/first-post">
               <a>
-              <div className="bg-gray-100 border-blue-800 dark:bg-blue-800 bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-blue-600 dark:hover:bg-blue-700 hover:border-transparent | transition-colors duration-500">
+              <div className="bg-gray-100 border-blue-900  bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-blue-600  hover:border-transparent | transition-colors duration-500">
                   <div className="w-8 h-8 object-cover p-1">
                     <Image
                       src="/list.svg"
