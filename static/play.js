@@ -20,7 +20,7 @@ const vocabulary_data = [
   [" ", "クリア！（スペースキーで最初に戻る）", "sampleA.jpg"],
 ];
 
-var checkTexts = [""];
+var checkTexts;
 //単語数の最大値を取得・保持・表示
 var vocabulary_max = 0;
 

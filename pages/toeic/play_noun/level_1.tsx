@@ -1,7 +1,8 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from "react";
+import Account from "components/notice/account";
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -11,34 +12,99 @@ export const getServerSideProps = async (context) => ({
 
 export default function Play() {
   const vocabulary_data = [
-    ["town", "町", "sampleA.jpg"],
-    ["apple", "りんご", "sampleB.jpg"],
-    ["town", "まち", "sampleB.jpg"],
-    ["town", "町", "sampleA.jpg"],
-    ["town", "町", "sampleA.jpg"],
-    [" ", "クリア！（スペースキーで最初に戻る）", "sampleA.jpg"],
+    ["This is the first page.", "This is the first page.", "/sampleA.jpg"],
+    ["apple", "りんご", "/apple.png"],
+    ["banana", "バナナ", "/banana.png"],
+    ["melon", "メロン", "/melon.png"],
   ];
 
   const [count, setCount] = useState(0);
-    // Declare multiple state variables!
-    const [age, setAge] = useState(42);
-    const [fruit, setFruit] = useState('banana');
-    const [todos, setTodos] = useState([{ text: 'Learn Hooks' }]);
+  var cnt = 0;
+  var checkTexts;
+  var startFlg = false;
 
-  const buttonAlert = () => {
-    {//createText();
+  const escFunction = useCallback((event) => {
+    if (startFlg){
+    if (event.key === checkTexts[0].textContent) {
+      checkTexts[0].className = "font-bold stext-7xl text-blue-800 font-serif";
+      checkTexts.shift();
+      if (!checkTexts.length) {
+        if (vocabulary_data.length === cnt + 1) {
+          cnt = 0;
+          setCount(0);
+          speakEnglish();
+          spanText();
+        }else {
+        cnt = cnt + 1;
+        speakEnglish();
+        spanText();
+        setCount(cnt);
+        }
+      }
+      window.onkeydown = function (event) {
+        return !(event.keyCode == 32);
+      };
     }
-    document.getElementById("start_button").style.display = "none";
-    document.getElementById("caution").style.display = "none";
-    document.getElementById("english_text").textContent = "town";
-    document.getElementById("japanese_text").textContent = "町";
+    if (event.keyCode === 27) {
+      // キーコードを判定して何かする。
+      console.log("Esc Key is pressed!");
+    }
+  }}, []);
 
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false);
+  }, []);
+
+  const moveNext = () => {
+    if (vocabulary_data.length === count + 1) {
+      cnt = 0;
+      setCount(0);
+      speakNextEnglish();
+    } else {
+      cnt = cnt + 1;
+      setCount(cnt);
+      speakNextEnglish();
+    }
+  };
+
+  const clickStart = () => {
+    startFlg=true;
+    moveNext();
+    speakEnglish();
+    spanText();
+    document.getElementById("start_button").style.display = "none";
+  };
+
+  const spanText = () => {
+    disp_english_text.textContent="";
+    checkTexts = vocabulary_data[cnt][0].split("").map(function (value) {
+      var span = document.createElement("span");
+      span.textContent = value;
+      disp_english_text.appendChild(span);
+      return span;
+    });
+  };
+
+  const speakEnglish = () => {
     const speech = new SpeechSynthesisUtterance();
     speech.lang = "en-US";
     speechSynthesis.cancel();
-    speech.text = "town";
+    speech.text = vocabulary_data[count][0];
     speechSynthesis.speak(speech);
-  }
+  };
+
+  const speakNextEnglish = () => {
+    const speech = new SpeechSynthesisUtterance();
+    speech.lang = "en-US";
+    speechSynthesis.cancel();
+    if (!(vocabulary_data.length === count + 1)) {
+      speech.text = vocabulary_data[count + 1][0];
+      speechSynthesis.speak(speech);
+    } else {
+      speech.text = vocabulary_data[0][0];
+      speechSynthesis.speak(speech);
+    }
+  };
 
   return (
     <>
@@ -61,94 +127,50 @@ export default function Play() {
       <section>
         <div className="text-center pt-8">
           <Image
-            src="/SampleA.jpg"
+            src={vocabulary_data[count][2]}
             height={200}
             width={324}
             alt="Sample"
             id="pic"
           />
         </div>
-        <div className="text-center grid-cols-12">
-          <div className="pt-8">
-        <button onClick={buttonAlert} id="start_button" className="w-28 h-10 bg-blue-700 hover:bg-blue-800 text-white text-2xl px-4 rounded">
-              Start
-          </button>
-          </div>
-          <p id="caution" className="text-sm pt-4 font-bold text-yellow-800">※音が鳴ります。<br></br>※ログインせずに開始すると<br></br>進捗をセーブできません。</p>
-          </div>
-      </section>
-      <section>
-      <p className="font-bold text-center text-6xl text-gray-600 pt-1" id="english_text">
-          
-        </p>
-        <p className="font-bold text-center text-3xl text-gray-900 pt-4" id="japanese_text">
-          
-        </p>
-        <div>
-      <p>You clicked {count} times</p>
-      <p>{vocabulary_data[count][0]}</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-      </section>
-
-      <section>
-      <div className="text-center pt-8 grid-cols-12">
-          <progress id="myProgress" value="0" max="100">
-            0%
-          </progress>
-        </div>
-      </section>
-
-      <section>
-      <div className="grid grid-cols-12 gap-4">
-        <div className="lg:col-start-4 lg:col-span-2 pl-20">
-          <p className="font-bold text-sm">
-            単語数カウント
+        <div className="text-center">
+          <p
+            className="font-bold text-center text-6xl text-gray-600 pt-1"
+            id="disp_english_text"
+          >
+          　
           </p>
-          <p id="count_word">0</p>
-          </div>
-        <div className="lg:col-span-2 pl-20">
-          <p className="font-bold text-sm">
-            文字数カウント
+          <p
+            className="font-bold text-center text-3xl text-gray-900 pt-4"
+            id="japanese_text"
+          >
+            {vocabulary_data[count][1]}
           </p>
-          <p id="count_char">0</p>
+          <div className="pt-3">
+            <p>-[ {count} ]-</p>
           </div>
-        <div className="lg:col-span-2 pl-20">
-        <p className="font-bold text-sm">
-          コンテンツ数
-        </p>
-          <p id="count_max_word">0</p>
-          </div>
-          </div>
-          <div className="text-center pt-8 grid-cols-12">
-          <button className="w-28 h-10 bg-green-700 hover:bg-green-700 text-white text-2xl px-4 rounded">
-              Save
-          </button>
-          </div>
-      </section>
 
-      <section>
-        <div className="text-center grid-cols-12 pt-8">
-          <h1 className="mb-4 font-bold text-green-700 text-2xl pt-12">
-            アカウントを作成しよう！
-          </h1>
-          <p className="text-sm mb-2 text-center">
-            このタイピングサイトはアカウントを作成することで、これまでのタイピングしたデータを保存できます。
-          </p>
-          <p className="text-sm mb-2 text-center">1分でアカウントを作成して、最大限楽しみましょう！</p>
-          <div className="pt-6">
-          <button className="w-36 h-10 bg-blue-800 font-bold hover:bg-blue-700 text-white py-2 px-4 rounded">
-          <div className="text-sm">
-              アカウント作成
-          </div>
-          </button>
+          <div className="grid  grid-cols-12 pt-3">
+            <div className="lg:col-start-4 lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
+              <button
+                onClick={clickStart}
+                className="w-28 h-10 bg-green-700 hover:bg-green-800 text-white text-2xl px-4 rounded"
+                id ="start_button"
+              >
+                <div className="text-lg font-bold">Start</div>
+              </button>
+            </div>
+
           </div>
         </div>
       </section>
+      <section>
+      <Account />
+      </section>
 
-      {//<script type="text/javascript" src="/static/play.js"></script>
+      {
+        //<script type="text/javascript" src="/static/play.js"></script>
       }
     </>
   );

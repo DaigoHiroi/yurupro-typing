@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <div className="grid-cols-12 gap-4">
       <Head>
-        <title>Toeic®︎などの英語学習タイピングアプリ</title>
+        <title>Yuru-Pro Typing ~Toeic®︎などの英語学習タイピングアプリ~</title>
         <meta name="description" content="Let's try TOEIC TYPING!!" />
         <meta property="og:aaa" />
         <link rel="icon" href="/favicon.ico" />

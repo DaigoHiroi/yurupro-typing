@@ -19,10 +19,10 @@ export default function Play() {
   ];
 
   const [count, setCount] = useState(0);
-  // Declare multiple state variables!
-  const [age, setAge] = useState(42);
-  const [fruit, setFruit] = useState("banana");
-  const [todos, setTodos] = useState([{ text: "Learn Hooks" }]);
+
+  const [text, setText] = useState('test text');
+
+  const handleKey = (e: React.KeyboardEvent<HTMLDivElement>) => setText(e.key);
 
   const clickNext = () => {
     if (vocabulary_data.length === count + 1) {
@@ -121,6 +121,15 @@ export default function Play() {
           <div className="pt-3">
             <p>-[ {count} ]-</p>
           </div>
+
+
+          <div className='App' onKeyPress={(e) => handleKey(e)} tabIndex={0}>
+			<div id='textbox'>{text}</div>
+		</div>
+
+
+
+
           <div className="grid  grid-cols-12 pt-3">
             <div className="lg:col-start-4 lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
               <button
