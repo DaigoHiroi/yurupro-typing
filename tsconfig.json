@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/utilis/Play.ts", "static/play.js"  ],
+,],
   "exclude": [
     "node_modules"
   ]

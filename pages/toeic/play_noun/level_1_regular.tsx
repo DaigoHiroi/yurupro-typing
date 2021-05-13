@@ -21,6 +21,7 @@ export default function Play() {
   var cnt = 0;
   var checkTexts;
   var startFlg = false;
+  const [disp_english_text , setEnglish] = useState(document.getElementById("disp_english_text"));
 
   const escFunction = useCallback((event) => {
     if (startFlg) {
