@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useCallback } from "react";
 import Account from "components/notice/account";
+import Data from "./data.json";
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -11,52 +12,52 @@ export const getServerSideProps = async (context) => ({
 });
 
 export default function Play() {
-  const vocabulary_data = [
-    ["This is the first page.", "This is the first page.", "/sampleA.jpg"],
-    ["apple", "りんご", "/apple.png"],
-    ["banana", "バナナ", "/banana.png"],
-    ["melon", "メロン", "/melon.png"],
-  ];
+  //ここで呼ぶ変数を指定
+  const file_path = Data.data.level_1.file_path;
+  const vocabulary_data = Data.data.level_1.vocabulary_data;
 
+  //TODO以下はそれぞれのコンポーネントとして表示したい
   const [count, setCount] = useState(0);
   var cnt = 0;
   var checkTexts;
   var startFlg = false;
 
   const escFunction = useCallback((event) => {
-    if (startFlg){
-    if (event.key === checkTexts[0].textContent) {
-      checkTexts[0].className = "font-bold stext-7xl text-blue-800 font-serif";
-      checkTexts.shift();
-      if (!checkTexts.length) {
-        if (vocabulary_data.length === cnt + 1) {
-          cnt = 0;
-          setCount(0);
-          speakNextEnglish();
-          spanText();
-        }else {
-        cnt = cnt + 1;
-        setCount(cnt);
-        speakNextEnglish();
-        spanText();
+    if (startFlg) {
+      if (event.key === checkTexts[0].textContent) {
+        checkTexts[0].className =
+          "font-bold stext-7xl text-blue-800 font-serif";
+        checkTexts.shift();
+        if (!checkTexts.length) {
+          if (vocabulary_data.length === cnt + 1) {
+            cnt = 0;
+            setCount(0);
+            speakNextEnglish();
+            spanText();
+          } else {
+            cnt = cnt + 1;
+            setCount(cnt);
+            speakNextEnglish();
+            spanText();
+          }
         }
+        window.onkeydown = function (event) {
+          return !(event.keyCode == 32);
+        };
       }
-      window.onkeydown = function (event) {
-        return !(event.keyCode == 32);
-      };
+      if (event.keyCode === 27) {
+        // キーコードを判定して何かする。
+        console.log("Esc Key is pressed!");
+      }
     }
-    if (event.keyCode === 27) {
-      // キーコードを判定して何かする。
-      console.log("Esc Key is pressed!");
-    }
-  }}, []);
+  }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", escFunction, false);
   }, []);
 
   const clickStart = () => {
-    startFlg=true;
+    startFlg = true;
     cnt = cnt + 1;
     setCount(cnt);
     speakNextEnglish();
@@ -65,7 +66,7 @@ export default function Play() {
   };
 
   const spanText = () => {
-    disp_english_text.textContent="";
+    disp_english_text.textContent = "";
     checkTexts = vocabulary_data[cnt][0].split("").map(function (value) {
       var span = document.createElement("span");
       span.textContent = value;
@@ -116,7 +117,7 @@ export default function Play() {
       <section>
         <div className="text-center pt-8">
           <Image
-            src={vocabulary_data[count][2]}
+            src={file_path + vocabulary_data[count][2]}
             height={200}
             width={324}
             alt="Sample"
@@ -128,7 +129,7 @@ export default function Play() {
             className="font-bold text-center text-6xl text-gray-600 pt-1"
             id="disp_english_text"
           >
-          　
+            　
           </p>
           <p
             className="font-bold text-center text-3xl text-gray-900 pt-4"
@@ -144,32 +145,28 @@ export default function Play() {
             <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
               <button
                 onClick={clickStart}
-                className="w-28 h-10 bg-yellow-700 hover:bg-yellow-800 text-white text-2xl px-4 rounded"
-                id ="start_button"
+                className="w-28 h-10 bg-blue-700 hover:bg-blue-800 text-white text-2xl px-4 rounded"
+                id="start_button"
               >
                 <div className="text-lg font-bold">Start</div>
               </button>
             </div>
 
-            <button
+            <div className="pt-2">
+              <button
                 onClick={speakButton}
                 className="w-28 h-10 bg-yellow-700 hover:bg-yellow-800 text-white text-2xl px-4 rounded"
-                id ="start_button"
+                id="start_button"
               >
                 <div className="text-lg font-bold">speak</div>
               </button>
-
-
+            </div>
           </div>
         </div>
       </section>
       <section>
-      <Account />
+        <Account />
       </section>
-
-      {
-        //<script type="text/javascript" src="/static/play.js"></script>
-      }
     </>
   );
 }

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import Account from "components/notice/account";
+import Data from './data.json';
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -11,19 +12,11 @@ export const getServerSideProps = async (context) => ({
 });
 
 export default function Play() {
-  const vocabulary_data = [
-    ["This is the first page.", "This is the first page.", "/sampleA.jpg"],
-    ["apple", "りんご", "/apple.png"],
-    ["banana", "ばなな", "/banana.png"],
-    ["melon", "メロン", "/melon.png"],
-  ];
+  //ここで呼ぶ変数を指定
+  const file_path = Data.data.level_1.file_path;
+  const vocabulary_data = Data.data.level_1.vocabulary_data;
 
   const [count, setCount] = useState(0);
-
-  const [text, setText] = useState('test text');
-
-  const handleKey = (e: React.KeyboardEvent<HTMLDivElement>) => setText(e.key);
-
   const clickNext = () => {
     if (vocabulary_data.length === count + 1) {
       setCount(0);
@@ -98,7 +91,7 @@ export default function Play() {
       <section>
         <div className="text-center pt-8">
           <Image
-            src={vocabulary_data[count][2]}
+            src={file_path + vocabulary_data[count][2]}
             height={200}
             width={324}
             alt="Sample"
@@ -121,15 +114,6 @@ export default function Play() {
           <div className="pt-3">
             <p>-[ {count} ]-</p>
           </div>
-
-
-          <div className='App' onKeyPress={(e) => handleKey(e)} tabIndex={0}>
-			<div id='textbox'>{text}</div>
-		</div>
-
-
-
-
           <div className="grid  grid-cols-12 pt-3">
             <div className="lg:col-start-4 lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
               <button

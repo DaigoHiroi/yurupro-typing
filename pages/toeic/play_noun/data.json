@@ -1,0 +1,22 @@
+{
+    "data": {
+        "level_1": {
+            "file_path":"/",
+            "vocabulary_data":
+            [["This is the first page.", "This is the first page.", "sampleA.jpg"],
+            ["apple", "りんご", "apple.png"],
+            ["banana", "バナナ", "banana.png"],
+            ["melon", "メロン", "melon.png"]]
+        },
+        "level_2": {
+            "file_path":"/",
+            "vocabulary_data":
+            [["This is the first page.", "This is the first page.", "sampleA.jpg"],
+            ["orange", "オレンジ", "apple.png"],
+            ["banana", "バナナ", "banana.png"],
+            ["watarmelon", "すいか", "melon.png"],
+            ["watarmelon", "すいか", "melon.png"],
+            ["watarmelon", "すいか", "melon.png"]]
+        }
+    }
+}
