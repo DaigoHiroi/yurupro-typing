@@ -66,11 +66,11 @@ export default function Play() {
   };
 
   const spanText = () => {
-    disp_english_text.textContent = "";
+    document.getElementById("disp_english_text").textContent = "";
     checkTexts = vocabulary_data[cnt][0].split("").map(function (value) {
       var span = document.createElement("span");
       span.textContent = value;
-      disp_english_text.appendChild(span);
+      document.getElementById("disp_english_text").appendChild(span);
       return span;
     });
   };
