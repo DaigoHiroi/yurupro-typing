@@ -15,12 +15,21 @@ export default function Play() {
   //ここで呼ぶ変数を指定
   const file_path = Data.data.level_1.file_path;
   const vocabulary_data = Data.data.level_1.vocabulary_data;
+  const vocabulary_max = vocabulary_data.length - 1;
 
   //TODO以下はそれぞれのコンポーネントとして表示したい
   const [count, setCount] = useState(0);
+  const [countWord, setCountWord] = useState(0);
+  const [countChar, setCountChar] = useState(0);
+  const [countHowMany, setCountHowMany] = useState(vocabulary_max);
+  const [progress, setProgress] = useState("");
+
+  var save_countWord = 0;
+  var save_countChar = 0;
   var cnt = 0;
   var checkTexts;
   var startFlg = false;
+  var progress_rate = 0;
 
   const escFunction = useCallback((event) => {
     if (startFlg) {
@@ -28,13 +37,21 @@ export default function Play() {
         checkTexts[0].className =
           "font-bold stext-7xl text-blue-800 font-serif";
         checkTexts.shift();
+        save_countChar = save_countChar + 1
+        setCountChar(save_countChar);
         if (!checkTexts.length) {
           if (vocabulary_data.length === cnt + 1) {
+            save_countWord = save_countWord + calcCountWords(document.getElementById("disp_english_text").textContent);
+            setCountWord(save_countWord);
+            //progress_rate = (save_countWord / vocabulary_max)*100;
+            //setProgress(String(progress_rate) + "%");
             cnt = 0;
             setCount(0);
             speakNextEnglish();
             spanText();
           } else {
+            save_countWord = save_countWord + calcCountWords(document.getElementById("disp_english_text").textContent);
+            setCountWord(save_countWord);
             cnt = cnt + 1;
             setCount(cnt);
             speakNextEnglish();
@@ -95,6 +112,13 @@ export default function Play() {
     speech.text = vocabulary_data[count][0];
     speechSynthesis.speak(speech);
   };
+
+
+  function calcCountWords(text) {
+    return (
+      (text += ".").replace(/(\,|\.|:|;|\!|\?|\s)+/g, " ").split(" ").length - 1
+    );
+  }
 
   return (
     <>
@@ -164,6 +188,18 @@ export default function Play() {
           </div>
         </div>
       </section>
+<section>
+      <div className="pt-3">
+            <p>-[ {countWord} ]-</p>
+          </div>
+          <div className="pt-3">
+            <p>-[ {countChar} ]-</p>
+          </div>
+          <div className="pt-3">
+            <p>-[ {countHowMany} ]-</p>
+          </div>
+
+          </section>
       <section>
         <Account />
       </section>
