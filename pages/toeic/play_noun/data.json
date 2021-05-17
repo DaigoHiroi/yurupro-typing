@@ -3,7 +3,8 @@
         "level_1": {
             "file_path":"/",
             "vocabulary_data":
-            [["This is the first page.", "This is the first page.", "sampleA.jpg"],
+            [
+            ["This is the first page.", "This is the first page.", "sampleA.jpg"],
             ["apple", "りんご", "apple.png"],
             ["banana", "バナナ", "banana.png"],
             ["melon", "メロン", "melon.png"]]

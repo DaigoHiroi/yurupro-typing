@@ -60,7 +60,7 @@ const Menu = (props) => {
             </div>
 
             <div className="lg:col-span-1 md:col-span-3 sm:col-span-2">
-            <Link href="/toeic/play_noun/level_1_regular">
+            <Link href="/toeic/play_noun/level_1_random">
               <a>
                 <div className="bg-gray-100 border-red-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-red-400 dark:hover:bg-red-600 hover:border-transparent | transition-colors duration-500">
                   <div className="w-8 h-8 object-cover p-1">
