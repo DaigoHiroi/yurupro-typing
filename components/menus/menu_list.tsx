@@ -9,7 +9,7 @@ const Menu = (props) => {
           { props.title }
           </h2>
           <div className="grid grid-cols-12 gap-0.5">
-            <div className="lg:col-start-4 lg:col-span-1 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
+            <div className="lg:col-start-4 lg:col-span-1 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 col-span-3">
             <Link href={props.regular_link}>
               <a>
                 <div className="bg-gray-100 border-indigo-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-indigo-400 dark:hover:bg-indigo-600 hover:border-transparent | transition-colors duration-500">
@@ -34,15 +34,15 @@ const Menu = (props) => {
             </Link>
             </div>
 
-            <div className="lg:col-span-1 md:col-span-3 sm:col-span-2">
+            <div className="lg:col-span-1 md:col-span-3 sm:col-span-2 col-span-3">
             <Link href={props.random_link}>
               <a>
                 <div className="bg-gray-100 border-red-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-red-400 dark:hover:bg-red-600 hover:border-transparent | transition-colors duration-500">
                   <div className="w-8 h-8 object-cover p-1">
                     <Image
                       src="/random.svg"
-                      height={48}
-                      width={48}
+                      height={60}
+                      width={60}
                       alt="ランダム並び"
                     />
                   </div>
@@ -59,15 +59,15 @@ const Menu = (props) => {
             </Link>
             </div>
 
-            <div className="lg:col-span-1 md:col-span-3 sm:col-span-2">
+            <div className="lg:col-span-1 md:col-span-3 sm:col-span-2 col-span-3">
             <Link href={props.crazy_link}>
               <a>
                 <div className="bg-gray-100 border-green-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-green-400 dark:hover:bg-green-600 hover:border-transparent | transition-colors duration-500">
                   <div className="w-8 h-8 object-cover p-1">
                     <Image
                       src="/crazy.svg"
-                      height={16}
-                      width={16}
+                      height={26}
+                      width={26}
                       alt="目隠しランダム"
                       className="w-16 h-16 object-cover"
                     />
@@ -84,7 +84,7 @@ const Menu = (props) => {
               </a>
             </Link>
             </div>
-            <div className="lg:col-span-1 md:col-span-3 sm:col-span-2">
+            <div className="lg:col-span-1 md:col-span-3 sm:col-span-2 col-span-3">
             <Link href={props.endless_link}>
               <a>
                 <div className="bg-gray-100 border-yellow-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-yellow-400 dark:hover:bg-yellow-600 hover:border-transparent | transition-colors duration-500">
@@ -109,7 +109,7 @@ const Menu = (props) => {
               </a>
             </Link>
           </div>
-        <div className="lg:col-span-1 md:col-span-3 sm:col-span-2">
+        <div className="lg:col-span-1 md:col-span-3 sm:col-span-2 col-span-3">
             <Link href={props.book_link}>
               <a>
               <div className="bg-gray-100 border-black dark:bg-black bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-gray-400 dark:hover:bg-gray-400 hover:border-transparent | transition-colors duration-500">
@@ -134,7 +134,7 @@ const Menu = (props) => {
               </a>
             </Link>
           </div>
-          <div className="lg:col-span-1 md:col-span-3 sm:col-span-2">
+          <div className="lg:col-span-1 md:col-span-3 sm:col-span-2 col-span-3">
             <Link href={props.list_link}>
               <a>
               <div className="bg-gray-100 border-blue-900  bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-blue-600  hover:border-transparent | transition-colors duration-500">
