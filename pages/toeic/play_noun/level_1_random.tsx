@@ -11,10 +11,11 @@ export const getServerSideProps = async (context) => ({
   },
 });
 
-export default function Play() {
+export default function PlayRandom() {
   //ここで呼ぶ変数を指定
-  const file_path = Data.data.level_1.file_path;
-  var vocabulary_data = Data.data.level_1.vocabulary_data;
+  const file_path = Data.data.level_2.file_path;
+  const [vocabulary_data,setVocab]=useState(Data.data.level_2.vocabulary_data);
+  //var vocabulary_data = Data.data.level_2.vocabulary_data;
   const vocabulary_max = vocabulary_data.length - 1;
 
   //TODO以下はそれぞれのコンポーネントとして表示したい
@@ -23,6 +24,7 @@ export default function Play() {
   const [countChar, setCountChar] = useState(0);
   const [countHowMany, setCountHowMany] = useState(vocabulary_max);
   const [progress, setProgress] = useState("");
+
 
   var save_countWord = 0;
   var save_countChar = 0;
@@ -33,10 +35,8 @@ export default function Play() {
 
   function arrayShuffle(array) {
     for(var i = (array.length - 1); 0 < i; i--){
-  
       // 0〜(i+1)の範囲で値を取得
       var r = Math.floor(Math.random() * (i + 1));
-  
       // 要素の並び替えを実行
       var tmp = array[i];
       array[i] = array[r];
@@ -88,8 +88,8 @@ export default function Play() {
   }, []);
 
   const clickStart = () => {
-    vocabulary_data.shift() ;
-    arrayShuffle(vocabulary_data);
+    //setVocab(vocabulary_data.shift());
+    setVocab(arrayShuffle(vocabulary_data));
     startFlg = true;
     cnt = cnt + 1;
     setCount(cnt);
@@ -177,6 +177,9 @@ export default function Play() {
           >
             {vocabulary_data[count][1]}
           </p>
+          <div className="pt-3">
+            <p>-[ {count} ]-</p>
+          </div>
 
           <div className="text-center pt-4">
             <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">

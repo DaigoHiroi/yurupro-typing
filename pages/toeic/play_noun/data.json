@@ -1,23 +1,30 @@
 {
     "data": {
+        "menuLink":"/toeic/menus/noun",
+        "first_vocabulary_data":["　Welcome to Yuru-Pro Typing!", "Let's start learning English.", "sampleA.jpg"],
+        "finish_vocabulary_data":["Clear!", "クリア！お疲れ様でした。", "sampleA.jpg"],
         "level_1": {
             "file_path":"/",
             "vocabulary_data":
             [
-            ["This is the first page.", "This is the first page.", "sampleA.jpg"],
             ["apple", "りんご", "apple.png"],
             ["banana", "バナナ", "banana.png"],
-            ["melon", "メロン", "melon.png"]]
+            ["melon", "メロン", "melon.png"]],
+            "random_flg":false,
+            "endless_flg":false,
+            "crazy_flg":false
         },
         "level_2": {
             "file_path":"/",
             "vocabulary_data":
-            [["This is the first page.", "This is the first page.", "sampleA.jpg"],
+            [
             ["orange", "オレンジ", "apple.png"],
             ["banana", "バナナ", "banana.png"],
             ["watarmelon", "すいか", "melon.png"],
-            ["watarmelon", "すいか", "melon.png"],
-            ["watarmelon", "すいか", "melon.png"]]
+            ["watarmelon", "すいか", "melon.png"]],
+            "random_flg":false,
+            "endless_flg":false,
+            "crazy_flg":false
         }
     }
 }

@@ -17,14 +17,14 @@ export default function nounMenu() {
     <>
       <div className="grid">
         <Head>
-          <title>Yuru-Pro Typing 名詞コース レベル選択</title>
+          <title>Yuru-Pro Typing 副詞コース レベル選択</title>
           <meta name="description" content="TOEICの英単語をタイピングで学ぶ" />
           <meta property="og:Yuru-Pro Typing" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
         <section>
-          <MenuTitle title={"TOEIC®︎名詞コース"} />
+          <MenuTitle title={"TOEIC®︎副詞コース"} />
           <MenuList
             title={"Level 1"}
             regular_link={"/toeic/play_noun/level_1_regular"}

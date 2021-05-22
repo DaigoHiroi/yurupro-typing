@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "styles/Home.module.css";
 import Link from "next/link";
+import Account from "components/notice/account";
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -61,7 +62,7 @@ export default function Home() {
               </a>
             </Link>
 
-            <Link href="/first-post">
+            <Link href="/toeic/menus/verb">
               <a>
                 <div className="bg-gray-100 border-red-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-red-400 dark:hover:bg-red-600 hover:border-transparent | transition-colors duration-500">
                   <div className="w-16 h-16 object-cover p-1">
@@ -69,7 +70,7 @@ export default function Home() {
                       src="/verb.svg"
                       height={48}
                       width={48}
-                      alt="An SVG of an verb"
+                      alt="TOEIC 動詞を勉強する"
                     />
                   </div>
                   <div className="flex flex-col justify-center">
@@ -84,7 +85,7 @@ export default function Home() {
               </a>
             </Link>
 
-            <Link href="/first-post">
+            <Link href="/toeic/menus/adjective">
               <a>
                 <div className="bg-gray-100 border-green-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-green-400 dark:hover:bg-green-600 hover:border-transparent | transition-colors duration-500">
                   <div className="w-16 h-16 object-cover p-1">
@@ -92,7 +93,7 @@ export default function Home() {
                       src="/adjective.svg"
                       height={42}
                       width={42}
-                      alt="An SVG of an risu"
+                      alt="TOEIC 形容詞を勉強する"
                       className="w-16 h-16 object-cover"
                     />
                   </div>
@@ -109,7 +110,7 @@ export default function Home() {
               </a>
             </Link>
 
-            <Link href="/first-post">
+            <Link href="/toeic/menus/adverb">
               <a>
                 <div className="bg-gray-100 border-yellow-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-4 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-yellow-400 dark:hover:bg-yellow-600 hover:border-transparent | transition-colors duration-500">
                   <div className="w-16 h-16 object-cover p-1">
@@ -117,7 +118,7 @@ export default function Home() {
                       src="/adverb.svg"
                       height={48}
                       width={48}
-                      alt="An SVG of an risu"
+                      alt="TOEIC 副詞を勉強する"
                       className="w-16 h-16 object-cover"
                     />
                   </div>
@@ -135,25 +136,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-
-        <section>
-        <div className="text-center grid-cols-12">
-          <h1 className="mb-4 font-bold text-green-700 text-2xl pt-20">
-            アカウントを作成しよう！
-          </h1>
-          <p className="text-sm mb-2 text-center">
-            このタイピングサイトはアカウントを作成することで、これまでのタイピングしたデータを保存できます。
-          </p>
-          <p className="text-sm mb-2 text-center">1分でアカウントを作成して、最大限楽しみましょう！</p>
-          <div className="pt-6">
-          <button className="w-36 h-10 bg-blue-800 font-bold hover:bg-blue-700 text-white py-2 px-4 rounded">
-            <div className="text-sm">
-              アカウント作成
-              </div>
-          </button>
-          </div>
-        </div>
-      </section>
+        <Account />
       </main>
     </div>
   );
