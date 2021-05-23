@@ -14,8 +14,8 @@ export const getServerSideProps = async (context) => ({
 });
 
 export default function Play() {
-  const random_flg = false;
-  const endless_flg = false;
+  const random_flg = true;
+  const endless_flg = true;
   const crazy_flg = false;
   const file_path = Data.data.level_1.file_path;
   const [crazyFlg, setCrazyFlg] = useState(crazy_flg);

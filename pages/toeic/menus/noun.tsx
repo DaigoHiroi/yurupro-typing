@@ -36,12 +36,12 @@ export default function nounMenu() {
           />
           <MenuList
             title={"Level 2"}
-            regular_link={"/toeic/play_noun/level_1_regular"}
-            random_link={"/toeic/play_noun/level_1_random"}
-            crazy_link={"/toeic/play_noun/level_1_crazy"}
-            endless_link={"/toeic/play_noun/level_1_endless"}
-            book_link={"/toeic/play_noun/level_1_book"}
-            list_link={"/toeic/play_noun/level_1_list"}
+            regular_link={"/toeic/play_noun/level_2_regular"}
+            random_link={"/toeic/play_noun/level_2_random"}
+            crazy_link={"/toeic/play_noun/level_2_crazy"}
+            endless_link={"/toeic/play_noun/level_2_endless"}
+            book_link={"/toeic/play_noun/level_2_book"}
+            list_link={"/toeic/play_noun/level_2_list"}
           />
           <MenuList
             title={"Level 3"}
