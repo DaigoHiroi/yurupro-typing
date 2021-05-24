@@ -376,7 +376,6 @@ export default function Play() {
           <button
             //onClick={clickSave}
             className="w-28 h-10 bg-green-700 hover:bg-green-900 text-white px-3 rounded"
-            style={{ display: showSave ? "" : "none" }}
             id="save_button"
           >
             <div className="text-sm font-semibold">Save & Exit</div>
