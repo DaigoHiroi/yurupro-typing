@@ -13,14 +13,14 @@ export const getServerSideProps = async (context) => ({
   },
 });
 
-export default function PlayCrazy() {
-  const [random_flg, setRandom_flg] = useState(false);
-  const [endless_flg, setEndless_flg] = useState(false);
+export default function PlayEndless2() {
+  const [random_flg, setRandom_flg] = useState(true);
+  const [endless_flg, setEndless_flg] = useState(true);
   const [crazy_flg, setCrazy_flg] = useState(false);
-  const file_path = Data.data.level_2.file_path;
+  const file_path = Data.data.level_1.file_path;
   const [crazyFlg, setCrazyFlg] = useState(crazy_flg);
   const [vocabulary_data, setVocab] = useState(
-    Data.data.level_2.vocabulary_data
+    Data.data.level_1.vocabulary_data_rdm
   );
 
   const first_vocabulary_data = Data.data.first_vocabulary_data;
@@ -127,6 +127,9 @@ export default function PlayCrazy() {
   }
 
   const clickStart = () => {
+    setRandom_flg(true);
+    setEndless_flg(true);
+    setCrazy_flg(false);
     startFlg = true;
     if (random_flg) {
       setVocab(arrayShuffle(vocabulary_data));
@@ -355,7 +358,7 @@ export default function PlayCrazy() {
             Words
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center ">
-            Charctors
+          Charctors
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center">
             Contents

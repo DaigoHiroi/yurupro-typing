@@ -85,12 +85,37 @@ const Menu = (props) => {
             </Link>
             </div>
             <div className="lg:col-span-1 md:col-span-3 sm:col-span-2 col-span-3">
-            <Link href={props.endless_link}>
+            <Link href={props.endless1_link}>
+              <a>
+              <div className="bg-gray-100 border-blue-900  bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-blue-600  hover:border-transparent | transition-colors duration-500">
+                  <div className="w-8 h-8 object-cover p-1">
+                    <Image
+                      src="/endless1.svg"
+                      height={32}
+                      width={32}
+                      alt="通常エンドレス"
+                      className="w-16 h-16 object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col justify-center">
+                    <p className="text-xs text-blue-900 dark:text-blue-900 font-bold">
+                      Endless
+                    </p>
+                    <p className="text-xs text-black dark:text-gray-100 text-justify font-semibold">
+                      無制限1
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </Link>
+          </div>
+            <div className="lg:col-span-1 md:col-span-3 sm:col-span-2 col-span-3">
+            <Link href={props.endless2_link}>
               <a>
                 <div className="bg-gray-100 border-yellow-600 dark:bg-gray-800 bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-yellow-400 dark:hover:bg-yellow-600 hover:border-transparent | transition-colors duration-500">
                   <div className="w-8 h-8 object-cover p-1">
                     <Image
-                      src="/endless.svg"
+                      src="/endless2.svg"
                       height={32}
                       width={32}
                       alt="ランダムエンドレス"
@@ -102,7 +127,7 @@ const Menu = (props) => {
                       Endless
                     </p>
                     <p className="text-xs text-black dark:text-gray-100 text-justify font-semibold">
-                      無制限
+                      無制限2
                     </p>
                   </div>
                 </div>
@@ -134,34 +159,8 @@ const Menu = (props) => {
               </a>
             </Link>
           </div>
-          <div className="lg:col-span-1 md:col-span-3 sm:col-span-2 col-span-3">
-            <Link href={props.list_link}>
-              <a>
-              <div className="bg-gray-100 border-blue-900  bg-opacity-95 border-opacity-60 | p-3 border-solid rounded-3xl border-2 | flex justify-around cursor-pointer | hover:bg-blue-600  hover:border-transparent | transition-colors duration-500">
-                  <div className="w-8 h-8 object-cover p-1">
-                    <Image
-                      src="/list.svg"
-                      height={32}
-                      width={32}
-                      alt="単語一覧"
-                      className="w-16 h-16 object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-center">
-                    <p className="text-xs text-blue-900 dark:text-blue-900 font-bold">
-                      List
-                    </p>
-                    <p className="text-xs text-black dark:text-gray-100 text-justify font-semibold">
-                      一覧
-                    </p>
-                  </div>
-                </div>
-              </a>
-            </Link>
-          </div>
           </div>
         </section>
-
         </div>
   );
 }

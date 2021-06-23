@@ -13,14 +13,14 @@ export const getServerSideProps = async (context) => ({
   },
 });
 
-export default function Play() {
-  const random_flg = true;
-  const endless_flg = false;
-  const crazy_flg = true;
+export default function PlayCrazy() {
+  const [random_flg, setRandom_flg] = useState(true);
+  const [endless_flg, setEndless_flg] = useState(false);
+  const [crazy_flg, setCrazy_flg] = useState(true);
   const file_path = Data.data.level_1.file_path;
   const [crazyFlg, setCrazyFlg] = useState(crazy_flg);
   const [vocabulary_data, setVocab] = useState(
-    Data.data.level_1.vocabulary_data
+    Data.data.level_1.vocabulary_data_rdm
   );
 
   const first_vocabulary_data = Data.data.first_vocabulary_data;
@@ -130,6 +130,8 @@ export default function Play() {
     startFlg = true;
     if (random_flg) {
       setVocab(arrayShuffle(vocabulary_data));
+    }else {
+      setVocab(Data.data.level_1.vocabulary_data);
     }
     if (endless_flg) {
       setProgressRate(100);
@@ -353,7 +355,7 @@ export default function Play() {
             Words
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center ">
-            Char
+            Charctors
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center">
             Contents

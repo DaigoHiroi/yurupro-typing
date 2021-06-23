@@ -11,7 +11,7 @@ export const getServerSideProps = async (context) => ({
   },
 });
 
-export default function Play() {
+export default function PlayBook() {
   //ここで呼ぶ変数を指定
   const file_path = Data.data.level_2.file_path;
   const vocabulary_data = Data.data.level_2.vocabulary_data;

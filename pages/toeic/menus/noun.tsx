@@ -5,6 +5,7 @@ import Link from "next/link";
 import MenuTitle from "components/menus/menu_title";
 import MenuList from "components/menus/menu_list";
 import Account from "components/notice/account";
+import React, { useState, useEffect, useCallback } from "react";
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -13,6 +14,7 @@ export const getServerSideProps = async (context) => ({
 });
 
 export default function nounMenu() {
+
   return (
     <>
       <div className="grid">
@@ -30,36 +32,37 @@ export default function nounMenu() {
             regular_link={"/toeic/play_noun/level_1_regular"}
             random_link={"/toeic/play_noun/level_1_random"}
             crazy_link={"/toeic/play_noun/level_1_crazy"}
-            endless_link={"/toeic/play_noun/level_1_endless"}
+            endless1_link={"/toeic/play_noun/level_1_endless1"}
+            endless2_link={"/toeic/play_noun/level_1_endless2"}
             book_link={"/toeic/play_noun/level_1_book"}
-            list_link={"/toeic/play_noun/level_1_list"}
+
           />
           <MenuList
             title={"Level 2"}
             regular_link={"/toeic/play_noun/level_2_regular"}
             random_link={"/toeic/play_noun/level_2_random"}
             crazy_link={"/toeic/play_noun/level_2_crazy"}
-            endless_link={"/toeic/play_noun/level_2_endless"}
+            endless1_link={"/toeic/play_noun/level_2_endless1"}
+            endless2_link={"/toeic/play_noun/level_2_endless2"}
             book_link={"/toeic/play_noun/level_2_book"}
-            list_link={"/toeic/play_noun/level_2_list"}
           />
           <MenuList
             title={"Level 3"}
             regular_link={"/toeic/play_noun/level_1_regular"}
             random_link={"/toeic/play_noun/level_1_random"}
             crazy_link={"/toeic/play_noun/level_1_crazy"}
-            endless_link={"/toeic/play_noun/level_1_endless"}
+            endless1_link={"/toeic/play_noun/level_1_endless1"}
+            endless2_link={"/toeic/play_noun/level_1_endless2"}
             book_link={"/toeic/play_noun/level_1_book"}
-            list_link={"/toeic/play_noun/level_1_list"}
           />
           <MenuList
             title={"Level 4"}
             regular_link={"/toeic/play_noun/level_1_regular"}
             random_link={"/toeic/play_noun/level_1_random"}
             crazy_link={"/toeic/play_noun/level_1_crazy"}
-            endless_link={"/toeic/play_noun/level_1_endless"}
+            endless1_link={"/toeic/play_noun/level_1_endless1"}
+            endless2_link={"/toeic/play_noun/level_1_endless2"}
             book_link={"/toeic/play_noun/level_1_book"}
-            list_link={"/toeic/play_noun/level_1_list"}
           />
           <Account />
         </section>
