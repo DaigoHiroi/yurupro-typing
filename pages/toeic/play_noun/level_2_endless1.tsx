@@ -20,7 +20,7 @@ export default function PlayEndless1() {
   const file_path = Data.data.level_2.file_path;
   const [crazyFlg, setCrazyFlg] = useState(crazy_flg);
   const [vocabulary_data, setVocab] = useState(
-    Data.data.level_2.vocabulary_data_rdm
+    Data.data.level_2.vocabulary_data
   );
 
   const first_vocabulary_data = Data.data.first_vocabulary_data;
