@@ -16,11 +16,11 @@ export const getServerSideProps = async (context) => ({
 export default function PlayCrazy() {
   const [random_flg, setRandom_flg] = useState(true);
   const [endless_flg, setEndless_flg] = useState(false);
-  const [crazy_flg, setCrazy_flg] = useState(true);
-  const file_path = Data.data.level_1.file_path;
+  const [crazy_flg, setCrazy_flg] = useState(false);
+  const file_path = Data.data.level_2.file_path;
   const [crazyFlg, setCrazyFlg] = useState(crazy_flg);
   const [vocabulary_data, setVocab] = useState(
-    Data.data.level_1.vocabulary_data_rdm
+    Data.data.level_2.vocabulary_data_rdm
   );
 
   const first_vocabulary_data = Data.data.first_vocabulary_data;

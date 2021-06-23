@@ -13,11 +13,11 @@ export const getServerSideProps = async (context) => ({
   },
 });
 
-export default function Play() {
+export default function PlayCrazy() {
+  const [random_flg, setRandom_flg] = useState(false);
+  const [endless_flg, setEndless_flg] = useState(false);
+  const [crazy_flg, setCrazy_flg] = useState(false);
   const file_path = Data.data.level_1.file_path;
-  const random_flg = Data.data.level_1.random_flg;
-  const endless_flg = Data.data.level_1.endless_flg;
-  const crazy_flg = Data.data.level_1.crazy_flg;
   const [crazyFlg, setCrazyFlg] = useState(crazy_flg);
   const [vocabulary_data, setVocab] = useState(
     Data.data.level_1.vocabulary_data
@@ -130,6 +130,8 @@ export default function Play() {
     startFlg = true;
     if (random_flg) {
       setVocab(arrayShuffle(vocabulary_data));
+    }else {
+      setVocab(Data.data.level_1.vocabulary_data);
     }
     if (endless_flg) {
       setProgressRate(100);
@@ -353,7 +355,7 @@ export default function Play() {
             Words
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center ">
-            Char
+            Charctors
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center">
             Contents
@@ -376,7 +378,6 @@ export default function Play() {
           <button
             //onClick={clickSave}
             className="w-28 h-10 bg-green-700 hover:bg-green-900 text-white px-3 rounded"
-            style={{ display: showSave ? "" : "none" }}
             id="save_button"
           >
             <div className="text-sm font-semibold">Save & Exit</div>
