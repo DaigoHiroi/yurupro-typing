@@ -48,21 +48,21 @@ export default function nounMenu() {
           />
           <MenuList
             title={"Level 3"}
-            regular_link={"/toeic/play_noun/level_1_regular"}
-            random_link={"/toeic/play_noun/level_1_random"}
-            crazy_link={"/toeic/play_noun/level_1_crazy"}
-            endless1_link={"/toeic/play_noun/level_1_endless1"}
-            endless2_link={"/toeic/play_noun/level_1_endless2"}
-            book_link={"/toeic/play_noun/level_1_book"}
+            regular_link={"/toeic/play_noun/level_3_regular"}
+            random_link={"/toeic/play_noun/level_3_random"}
+            crazy_link={"/toeic/play_noun/level_3_crazy"}
+            endless1_link={"/toeic/play_noun/level_3_endless1"}
+            endless2_link={"/toeic/play_noun/level_3_endless2"}
+            book_link={"/toeic/play_noun/level_3_book"}
           />
           <MenuList
             title={"Level 4"}
-            regular_link={"/toeic/play_noun/level_1_regular"}
-            random_link={"/toeic/play_noun/level_1_random"}
-            crazy_link={"/toeic/play_noun/level_1_crazy"}
-            endless1_link={"/toeic/play_noun/level_1_endless1"}
-            endless2_link={"/toeic/play_noun/level_1_endless2"}
-            book_link={"/toeic/play_noun/level_1_book"}
+            regular_link={"/toeic/play_noun/level_4_regular"}
+            random_link={"/toeic/play_noun/level_4_random"}
+            crazy_link={"/toeic/play_noun/level_4_crazy"}
+            endless1_link={"/toeic/play_noun/level_4_endless1"}
+            endless2_link={"/toeic/play_noun/level_4_endless2"}
+            book_link={"/toeic/play_noun/level_4_book"}
           />
           <Account />
         </section>

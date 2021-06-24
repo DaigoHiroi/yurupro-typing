@@ -17,10 +17,10 @@ export default function PlayEndless2() {
   const [random_flg, setRandom_flg] = useState(true);
   const [endless_flg, setEndless_flg] = useState(true);
   const [crazy_flg, setCrazy_flg] = useState(false);
-  const file_path = Data.data.level_2.file_path;
+  const file_path = Data.data.level_4.file_path;
   const [crazyFlg, setCrazyFlg] = useState(crazy_flg);
   const [vocabulary_data, setVocab] = useState(
-    Data.data.level_2.vocabulary_data_rdm
+    Data.data.level_4.vocabulary_data_rdm
   );
 
   const first_vocabulary_data = Data.data.first_vocabulary_data;

@@ -13,14 +13,14 @@ export const getServerSideProps = async (context) => ({
   },
 });
 
-export default function PlayEndless2() {
-  const [random_flg, setRandom_flg] = useState(true);
+export default function PlayEndless1() {
+  const [random_flg, setRandom_flg] = useState(false);
   const [endless_flg, setEndless_flg] = useState(true);
   const [crazy_flg, setCrazy_flg] = useState(false);
-  const file_path = Data.data.level_2.file_path;
+  const file_path = Data.data.level_4.file_path;
   const [crazyFlg, setCrazyFlg] = useState(crazy_flg);
   const [vocabulary_data, setVocab] = useState(
-    Data.data.level_2.vocabulary_data_rdm
+    Data.data.level_4.vocabulary_data
   );
 
   const first_vocabulary_data = Data.data.first_vocabulary_data;
@@ -127,7 +127,7 @@ export default function PlayEndless2() {
   }
 
   const clickStart = () => {
-    setRandom_flg(true);
+    setRandom_flg(false);
     setEndless_flg(true);
     setCrazy_flg(false);
     startFlg = true;
@@ -358,7 +358,7 @@ export default function PlayEndless2() {
             Words
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center ">
-          Charctors
+            Charctors
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center">
             Contents
