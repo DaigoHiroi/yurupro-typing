@@ -226,7 +226,7 @@ export default function PlayEndless2() {
       </div>
       <section>
         <div className="text-center pt-8">
-          <Image src={src} height={200} width={324} alt="Sample" id="pic" />
+          <Image src={src} height={200} width={324} alt="EnglishTyping" id="pic" />
         </div>
         <div className="text-center">
           {crazyFlg ? (
