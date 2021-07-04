@@ -6,6 +6,7 @@ import Account from "components/notice/account";
 import Data from "./data.json";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
+import styles from 'styles/Play.module.css'
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -71,6 +72,7 @@ export default function PlayCrazy() {
               if (random_flg) {
                 setVocab(arrayShuffle(vocabulary_data));
               }
+              setSrc(file_path + vocabulary_data[cnt+1][2]);
               setSrc(file_path + vocabulary_data[cnt][2]);
               setDispEnglish(vocabulary_data[cnt][0]);
               setDispJapanese(vocabulary_data[cnt][1]);
@@ -223,7 +225,7 @@ export default function PlayCrazy() {
       </div>
       <section>
         <div className="text-center pt-8">
-          <Image src={src} height={200} width={324} alt="Sample" id="pic" />
+          <Image src={src} height={200} width={324} alt="EnglishTyping" className={styles.pic}/>
         </div>
         <div className="text-center">
           {crazyFlg ? (
