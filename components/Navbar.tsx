@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import Image from 'next/image'
 
-const navBar = () => {
+const NavBar = () => {
   const [active, setActive] = useState(false);
   const handleClick = () => {
     setActive(!active);
@@ -91,4 +91,4 @@ const navBar = () => {
   );
 }
 
-export default navBar;
+export default NavBar;

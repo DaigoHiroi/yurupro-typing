@@ -1,10 +1,6 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import Header from './header'
-import Footer from './footer'
-import NavBar from './navBar'
-import styles from "styles/Home.module.css"
+import Head from 'next/head';
+import Footer from './footer';
+import NavBar from './navBar';
 
 function mainLayout({ children }) {
     return (
