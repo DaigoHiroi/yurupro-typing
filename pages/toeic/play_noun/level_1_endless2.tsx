@@ -2,10 +2,11 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useCallback } from "react";
-import Account from "components/notice/account";
+import ButtonExit from "components/buttonExit";
 import Data from "./data.json";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
+import styles from 'styles/Play.module.css';
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -48,163 +49,164 @@ export default function PlayEndless2() {
   var progress = 0;
 
   const escFunction = useCallback((event) => {
-    if (startFlg) {
-      if (event.key === checkTexts[0].textContent) {
-        checkTexts[0].className =
-          "font-bold stext-7xl text-blue-800 font-serif";
-        checkTexts.shift();
-        save_countChar = save_countChar + 1;
-        setCountChar(save_countChar);
-        if (!checkTexts.length) {
-          if (vocabulary_data.length === cnt + 1) {
-            save_countWord =
-              save_countWord +
-              calcCountWords(
-                document.getElementById("disp_english_text").textContent
-              );
-            setCountWord(save_countWord);
-            //progress_rate = (save_countWord / vocabulary_max)*100;
-            //setProgress(String(progress_rate) + "%");
-            if (endless_flg) {
-              cnt = 0;
-              setCount(cnt + 1);
-              if (random_flg) {
-                setVocab(arrayShuffle(vocabulary_data));
-              }
-              setSrc(file_path + vocabulary_data[cnt][2]);
-              setDispEnglish(vocabulary_data[cnt][0]);
-              setDispJapanese(vocabulary_data[cnt][1]);
-              speakNextEnglish();
-              spanText();
-            } else {
-              finishTyping();
-            }
+    if (startFlg && event.key === checkTexts[0].textContent) {
+      checkTexts[0].className =
+        "font-bold text-7xl text-blue-800 font-serif";
+      checkTexts.shift();
+      save_countChar = save_countChar + 1;
+      setCountChar(save_countChar);
+      if (!checkTexts.length) {
+        if (vocabulary_data.length === cnt + 1) {
+          save_countWord =
+            save_countWord +
+            calcCountWords(
+              document.getElementById("disp_english_text").textContent
+            );
+          setCountWord(save_countWord);
+          if (!endless_flg) {
+            finishTyping();
           } else {
-            save_countWord =
-              save_countWord +
-              calcCountWords(
-                document.getElementById("disp_english_text").textContent
-              );
-            setCountWord(save_countWord);
-            cnt = cnt + 1;
+            document.removeEventListener("keydown", escFunction, false);
+            cnt = 0;
             setCount(cnt + 1);
+            if (random_flg) {
+              setVocab(arrayShuffle(vocabulary_data));
+            }
             setSrc(file_path + vocabulary_data[cnt][2]);
             setDispEnglish(vocabulary_data[cnt][0]);
             setDispJapanese(vocabulary_data[cnt][1]);
             speakNextEnglish();
             spanText();
-            progress = Math.floor((save_countWord / vocabulary_max) * 100);
-            if (!endless_flg) {
-              setProgressRate(progress);
-            }
+            document.addEventListener("keydown", escFunction, false);
           }
+        } else {
+          document.removeEventListener("keydown", escFunction, false);
+          save_countWord =
+            save_countWord +
+            calcCountWords(
+              document.getElementById("disp_english_text").textContent
+            );
+          setCountWord(save_countWord);
+          cnt = cnt + 1;
+          setCount(cnt + 1);
+          setSrc(file_path + vocabulary_data[cnt][2]);
+          setDispEnglish(vocabulary_data[cnt][0]);
+          setDispJapanese(vocabulary_data[cnt][1]);
+          speakNextEnglish();
+          spanText();
+          progress = Math.floor((save_countWord / vocabulary_max) * 100);
+          if (!endless_flg) {
+            setProgressRate(progress);
+          }
+          document.addEventListener("keydown", escFunction, false);
         }
-        window.onkeydown = function (event) {
-          return !(event.keyCode == 32);
-        };
       }
-      if (event.keyCode === 27) {
-        // キーコードを判定して何かする。
-        console.log("Esc Key is pressed!");
-      }
+      window.onkeydown = function (event) {
+        return !(event.keyCode == 32);
+      };
     }
-  }, []);
-
-  useEffect(() => {
-    document.addEventListener("keydown", escFunction, false);
-  }, []);
-
-  function arrayShuffle(array) {
-    for (var i = array.length - 1; 0 < i; i--) {
-      // 0〜(i+1)の範囲で値を取得
-      var r = Math.floor(Math.random() * (i + 1));
-      // 要素の並び替えを実行
-      var tmp = array[i];
-      array[i] = array[r];
-      array[r] = tmp;
+    if (event.keyCode === 27) {
+      // キーコードを判定して何かする。
+      console.log("Esc Key is pressed!");
     }
-    return array;
+}, []);
+
+useEffect(() => {
+  document.addEventListener("keydown", escFunction, false);
+  return () => {
+    document.removeEventListener("keydown", escFunction, false);
+    setVocab([]);
   }
+}, [escFunction]);
 
-  const clickStart = () => {
-    setRandom_flg(true);
-    setEndless_flg(true);
-    setCrazy_flg(false);
-    startFlg = true;
-    if (random_flg) {
-      setVocab(arrayShuffle(vocabulary_data));
-    }else {
-      setVocab(Data.data.level_1.vocabulary_data);
-    }
-    if (endless_flg) {
-      setProgressRate(100);
-    }
-    if (crazy_flg) {
-      setCrazyWhite("text-gray-600");
-    }
-    //cnt = cnt + 1;
-    setCount(cnt + 1);
-    setSrc(file_path + vocabulary_data[0][2]);
-    setDispEnglish(vocabulary_data[0][0]);
-    setDispJapanese(vocabulary_data[0][1]);
-    speakNextEnglish();
-    spanText();
-    setShowStart(false);
-    setShowSpeak(true);
-    //document.getElementById("start_button").style.display = "none";
-  };
+function arrayShuffle(array) {
+  for (var i = array.length - 1; 0 < i; i--) {
+    // 0〜(i+1)の範囲で値を取得
+    var r = Math.floor(Math.random() * (i + 1));
+    // 要素の並び替えを実行
+    var tmp = array[i];
+    array[i] = array[r];
+    array[r] = tmp;
+  }
+  return array;
+}
 
-  const spanText = () => {
-    document.getElementById("disp_english_text").textContent = "";
-    checkTexts = vocabulary_data[cnt][0].split("").map(function (value) {
-      var span = document.createElement("span");
-      span.textContent = value;
-      document.getElementById("disp_english_text").appendChild(span);
-      return span;
-    });
-  };
-
-  const speakNextEnglish = () => {
-    const speech = new SpeechSynthesisUtterance();
-    speech.lang = "en-US";
-    speechSynthesis.cancel();
-    if (!(vocabulary_data.length === count + 1)) {
-      speech.text = vocabulary_data[cnt][0];
-      speechSynthesis.speak(speech);
-    } else {
-      //speech.text = vocabulary_data[0][0];
-      //speechSynthesis.speak(speech);
-    }
-  };
-
-  const speakButton = () => {
-    const speech = new SpeechSynthesisUtterance();
-    speech.lang = "en-US";
-    speechSynthesis.cancel();
-    speech.text = vocabulary_data[count - 1][0];
-    speechSynthesis.speak(speech);
-  };
-
-  const finishTyping = () => {
-    startFlg = false;
-    document.getElementById("disp_english_text").textContent = "";
-    cnt = 0;
-    setCount(0);
-    setSrc(file_path + finish_vocabulary_data[2]);
-    setDispEnglish(finish_vocabulary_data[0]);
-    setDispJapanese(finish_vocabulary_data[1]);
-    setShowSpeak(false);
+const clickStart = () => {
+  startFlg = true;
+  if (random_flg) {
+    setVocab(arrayShuffle(vocabulary_data));
+  }else {
+    setVocab(Data.data.level_1.vocabulary_data);
+  }
+  if (endless_flg) {
     setProgressRate(100);
-    setShowSave(false);
-    setShowModal(true);
-    //document.getElementById("speak_button").style.display = "none";
-  };
-
-  function calcCountWords(text) {
-    return (
-      (text += ".").replace(/(\,|\.|:|;|\!|\?|\s)+/g, " ").split(" ").length - 1
-    );
   }
+  if (crazy_flg) {
+    setCrazyWhite("text-gray-600");
+  }
+  //cnt = cnt + 1;
+  setCount(cnt + 1);
+  setSrc(file_path + vocabulary_data[0][2]);
+  setDispEnglish(vocabulary_data[0][0]);
+  setDispJapanese(vocabulary_data[0][1]);
+  speakNextEnglish();
+  spanText();
+  setShowStart(false);
+  setShowSpeak(true);
+  //document.getElementById("start_button").style.display = "none";
+};
+
+const spanText = () => {
+  document.getElementById("disp_english_text").textContent = "";
+  checkTexts = vocabulary_data[cnt][0].split("").map(function (value) {
+    var span = document.createElement("span");
+    span.textContent = value;
+    document.getElementById("disp_english_text").appendChild(span);
+    return span;
+  });
+};
+
+const speakNextEnglish = () => {
+  const speech = new SpeechSynthesisUtterance();
+  speech.lang = "en-US";
+  speechSynthesis.cancel();
+  if (!(vocabulary_data.length === count + 1)) {
+    speech.text = vocabulary_data[cnt][0];
+    speechSynthesis.speak(speech);
+  } else {
+    //speech.text = vocabulary_data[0][0];
+    //speechSynthesis.speak(speech);
+  }
+};
+
+const speakButton = () => {
+  const speech = new SpeechSynthesisUtterance();
+  speech.lang = "en-US";
+  speechSynthesis.cancel();
+  speech.text = vocabulary_data[count - 1][0];
+  speechSynthesis.speak(speech);
+};
+
+const finishTyping = () => {
+  startFlg = false;
+  document.getElementById("disp_english_text").textContent = "";
+  cnt = 0;
+  setCount(0);
+  setSrc(file_path + finish_vocabulary_data[2]);
+  setDispEnglish(finish_vocabulary_data[0]);
+  setDispJapanese(finish_vocabulary_data[1]);
+  setShowSpeak(false);
+  setProgressRate(100);
+  setShowSave(false);
+  setShowModal(true);
+  //document.getElementById("speak_button").style.display = "none";
+};
+
+function calcCountWords(text) {
+  return (
+    (text += ".").replace(/(\,|\.|:|;|\!|\?|\s)+/g, " ").split(" ").length - 1
+  );
+}
 
   return (
     <>
@@ -226,7 +228,7 @@ export default function PlayEndless2() {
       </div>
       <section>
         <div className="text-center pt-8">
-          <Image src={src} height={200} width={324} alt="EnglishTyping" id="pic" />
+          <Image src={src} height={200} width={324} alt="EnglishTyping" id="pic" className={styles.pic}/>
         </div>
         <div className="text-center">
           {crazyFlg ? (
@@ -377,18 +379,7 @@ export default function PlayEndless2() {
         </div>
       </section>
       <section>
-        <div className="pt-3 text-center">
-          <button
-            //onClick={clickSave}
-            className="w-28 h-10 bg-green-700 hover:bg-green-900 text-white px-3 rounded"
-            id="save_button"
-          >
-            <div className="text-sm font-semibold">Save & Exit</div>
-          </button>
-        </div>
-      </section>
-      <section>
-        <Account />
+        <ButtonExit url='/toeic/menus/noun'/>
       </section>
     </>
   );

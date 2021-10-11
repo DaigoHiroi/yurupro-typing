@@ -13,9 +13,10 @@ export default function one(){
     return (
         <>
         <Head>
-            <title>TEST FIRST POST</title>
+            <title>ログイン画面</title>
         </Head>
-        <div className="h-screen bg-white flex flex-col space-y-10 justify-center items-center">
+        <div className="flex justify-center">この画面は開発中のものです。ログイン/アカウントを作成することはできません。</div>
+        <div className="h-screen bg-white flex flex-col space-y-4 justify-center items-center">
   <div className="bg-white w-96 shadow-xl rounded p-5">
     <h1 className="text-3xl font-medium">ログイン画面</h1>
     <p className="text-sm">パスワードとIDを入力してください。</p>

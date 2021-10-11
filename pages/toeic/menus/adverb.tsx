@@ -4,7 +4,7 @@ import styles from "/styles/Home.module.css";
 import Link from "next/link";
 import MenuTitle from "components/menus/menu_title";
 import MenuList from "components/menus/menu_list";
-import Account from "components/notice/account";
+import Account from "components/notice/templates/account";
 
 export const getServerSideProps = async (context) => ({
   props: {

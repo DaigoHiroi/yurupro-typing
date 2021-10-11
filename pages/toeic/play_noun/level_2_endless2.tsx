@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useCallback } from "react";
-import Account from "components/notice/account";
+import Account from "components/notice/templates/account";
 import Data from "./data.json";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
@@ -386,9 +386,6 @@ export default function PlayEndless2() {
             <div className="text-sm font-semibold">Save & Exit</div>
           </button>
         </div>
-      </section>
-      <section>
-        <Account />
       </section>
     </>
   );

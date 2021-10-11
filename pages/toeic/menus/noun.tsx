@@ -4,7 +4,6 @@ import styles from "/styles/Home.module.css";
 import Link from "next/link";
 import MenuTitle from "components/menus/menu_title";
 import MenuList from "components/menus/menu_list";
-import Account from "components/notice/account";
 import React, { useState, useEffect, useCallback } from "react";
 
 export const getServerSideProps = async (context) => ({
@@ -64,7 +63,7 @@ export default function nounMenu() {
             endless2_link={"/toeic/play_noun/level_4_endless2"}
             book_link={"/toeic/play_noun/level_4_book"}
           />
-          <Account />
+
         </section>
       </div>
     </>

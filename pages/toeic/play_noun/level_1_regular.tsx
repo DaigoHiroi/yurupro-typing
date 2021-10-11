@@ -2,19 +2,19 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useCallback } from "react";
-import Account from "components/notice/account";
+import ButtonExit from "components/buttonExit";
 import Data from "./data.json";
 import { Progress } from "react-sweet-progress";
 import "react-sweet-progress/lib/style.css";
-import styles from 'styles/Play.module.css'
+import styles from 'styles/Play.module.css';
 
-export const getServerSideProps = async (context) => ({
+export const getServerSideProps = async (props) => ({
   props: {
     layout: true, // 複数のレイアウトを切り替えたいときは 'MainLayout' などの文字列を用いる
   },
 });
 
-export default function PlayCrazy() {
+export default function PlayRegular() {
   const [random_flg, setRandom_flg] = useState(false);
   const [endless_flg, setEndless_flg] = useState(false);
   const [crazy_flg, setCrazy_flg] = useState(false);
@@ -49,10 +49,9 @@ export default function PlayCrazy() {
   var progress = 0;
 
   const escFunction = useCallback((event) => {
-    if (startFlg) {
-      if (event.key === checkTexts[0].textContent) {
+      if (startFlg && event.key === checkTexts[0].textContent) {
         checkTexts[0].className =
-          "font-bold stext-7xl text-blue-800 font-serif";
+          "font-bold text-7xl text-blue-800 font-serif";
         checkTexts.shift();
         save_countChar = save_countChar + 1;
         setCountChar(save_countChar);
@@ -64,24 +63,24 @@ export default function PlayCrazy() {
                 document.getElementById("disp_english_text").textContent
               );
             setCountWord(save_countWord);
-            //progress_rate = (save_countWord / vocabulary_max)*100;
-            //setProgress(String(progress_rate) + "%");
-            if (endless_flg) {
+            if (!endless_flg) {
+              finishTyping();
+            } else {
+              document.removeEventListener("keydown", escFunction, false);
               cnt = 0;
               setCount(cnt + 1);
               if (random_flg) {
                 setVocab(arrayShuffle(vocabulary_data));
               }
-              setSrc(file_path + vocabulary_data[cnt+1][2]);
               setSrc(file_path + vocabulary_data[cnt][2]);
               setDispEnglish(vocabulary_data[cnt][0]);
               setDispJapanese(vocabulary_data[cnt][1]);
               speakNextEnglish();
               spanText();
-            } else {
-              finishTyping();
+              document.addEventListener("keydown", escFunction, false);
             }
           } else {
+            document.removeEventListener("keydown", escFunction, false);
             save_countWord =
               save_countWord +
               calcCountWords(
@@ -99,6 +98,7 @@ export default function PlayCrazy() {
             if (!endless_flg) {
               setProgressRate(progress);
             }
+            document.addEventListener("keydown", escFunction, false);
           }
         }
         window.onkeydown = function (event) {
@@ -109,12 +109,15 @@ export default function PlayCrazy() {
         // キーコードを判定して何かする。
         console.log("Esc Key is pressed!");
       }
-    }
   }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", escFunction, false);
-  }, []);
+    return () => {
+      document.removeEventListener("keydown", escFunction, false);
+      setVocab([]);
+    }
+  }, [escFunction]);
 
   function arrayShuffle(array) {
     for (var i = array.length - 1; 0 < i; i--) {
@@ -210,7 +213,7 @@ export default function PlayCrazy() {
       <Head>
         <title>Yuru-Pro_Typing 名詞 level 1</title>
         <meta name="description" content="Let's try TOEIC TYPING!!" />
-        <meta property="og:aaa" />
+        <meta property="タイピングと英語を学習できるWebアプリ" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -352,42 +355,31 @@ export default function PlayCrazy() {
         </>
       ) : null}
       <section>
-        <div className="grid  grid-cols-12 pt-3 text-base font-semibold">
+        <div className="grid  grid-cols-12 pt-3 text-base font-bold">
           <div className="lg:col-start-4 lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center ">
             Words
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center ">
-            Charctors
+          Characters
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center">
             Contents
           </div>
         </div>
-        <div className="grid  grid-cols-12 pt-3 text-sm font-semibold text-gray-500">
+        <div className="grid  grid-cols-12 pt-3 text-sm font-bold text-gray-500">
           <div className="lg:col-start-4 lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center ">
-            - {countWord} -
+            {countWord}
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center ">
-            - {countChar} -
+            {countChar}
           </div>
           <div className="lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2 text-center">
-            - {countHowMany} -
+            {countHowMany}
           </div>
         </div>
       </section>
       <section>
-        <div className="pt-3 text-center">
-          <button
-            //onClick={clickSave}
-            className="w-28 h-10 bg-green-700 hover:bg-green-900 text-white px-3 rounded"
-            id="save_button"
-          >
-            <div className="text-sm font-semibold">Save & Exit</div>
-          </button>
-        </div>
-      </section>
-      <section>
-        <Account />
+        <ButtonExit url='/toeic/menus/noun'/>
       </section>
     </>
   );

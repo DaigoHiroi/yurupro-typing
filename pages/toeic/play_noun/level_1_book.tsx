@@ -2,8 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import Account from "components/notice/account";
+import ButtonExit from "components/buttonExit";
 import Data from './data.json';
+import styles from 'styles/Play.module.css';
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -94,8 +95,9 @@ export default function PlayBook() {
             src={file_path + vocabulary_data[count][2]}
             height={200}
             width={324}
-            alt="Sample"
+            alt="単語帳の画像"
             id="pic"
+            className={styles.pic}
           />
         </div>
         <div className="text-center">
@@ -142,14 +144,10 @@ export default function PlayBook() {
           </div>
         </div>
       </section>
-
       <section>
-      <Account />
+        <ButtonExit url='/toeic/menus/noun'/>
       </section>
-
-      {
-        //<script type="text/javascript" src="/static/play.js"></script>
-      }
+      <div className="p-12"></div>
     </>
   );
 }

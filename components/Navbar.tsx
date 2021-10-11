@@ -1,10 +1,9 @@
-import Link from 'next/link';
-import { useState } from 'react';
+import Link from 'next/link'
+import { useState } from 'react'
 import Image from 'next/image'
 
-export const Navbar = () => {
+const navBar = () => {
   const [active, setActive] = useState(false);
-
   const handleClick = () => {
     setActive(!active);
   };
@@ -18,10 +17,10 @@ export const Navbar = () => {
             src="/ushi.svg"
             height={24}
             width={24}
-            alt="An SVG of an risu" 
+            alt="英語タイピングアプリ"
             />
             <span className='text-sm text-white font-bold uppercase tracking-wide'>
-              Yuru-PRO Typing
+              Yuru-PRO Typing™
             </span>
           </a>
         </Link>
@@ -54,27 +53,27 @@ export const Navbar = () => {
           <label　className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
               GuestUser
             </label>
-            <label　className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
+            {/* <label　className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
               単語: 12345
-            </label>
-            <label　className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
+            </label> */}
+            {/* <label　className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
               文字: 12345
-            </label>
+            </label> */}
             <Link href='/'>
               <a className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white '>
                 Home
               </a>
             </Link>
-            <Link href='/'>
+            {/* <Link href='/'>
               <a className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white'>
                 My page
               </a>
-            </Link>
-            <Link href='/'>
+            </Link> */}
+            {/* <Link href='/'>
               <a className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white'>
                 About us
               </a>
-            </Link>
+            </Link> */}
             <Link href="/login/login">
             <a className='text-xs lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white'>
           ログイン
@@ -90,4 +89,6 @@ export const Navbar = () => {
       </nav>
     </div>
   );
-};
+}
+
+export default navBar;

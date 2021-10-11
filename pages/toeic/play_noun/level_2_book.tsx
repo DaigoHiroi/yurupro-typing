@@ -2,7 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import Account from "components/notice/account";
+import Account from "components/notice/templates/account";
 import Data from './data.json';
 
 export const getServerSideProps = async (context) => ({
@@ -142,14 +142,7 @@ export default function PlayBook() {
           </div>
         </div>
       </section>
-
-      <section>
-      <Account />
-      </section>
-
-      {
-        //<script type="text/javascript" src="/static/play.js"></script>
-      }
+      <div className="p-12"></div>
     </>
   );
 }
