@@ -72,6 +72,7 @@ export default function PlayCrazy() {
             if (random_flg) {
               setVocab(arrayShuffle(vocabulary_data));
             }
+            setSrc(file_path + vocabulary_data[cnt+1][2]);
             setSrc(file_path + vocabulary_data[cnt][2]);
             setDispEnglish(vocabulary_data[cnt][0]);
             setDispJapanese(vocabulary_data[cnt][1]);
@@ -89,6 +90,7 @@ export default function PlayCrazy() {
           setCountWord(save_countWord);
           cnt = cnt + 1;
           setCount(cnt + 1);
+          setSrc(file_path + vocabulary_data[cnt+1][2]);
           setSrc(file_path + vocabulary_data[cnt][2]);
           setDispEnglish(vocabulary_data[cnt][0]);
           setDispJapanese(vocabulary_data[cnt][1]);
