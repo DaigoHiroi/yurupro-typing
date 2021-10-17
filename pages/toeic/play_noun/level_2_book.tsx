@@ -2,8 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
-import Account from "components/notice/templates/account";
+import ButtonExit from "components/buttonExit";
 import Data from './data.json';
+import styles from 'styles/Play.module.css';
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -71,78 +72,79 @@ export default function PlayBook() {
   };
 
   return (
-    <>
-      <Head>
-        <title>Yuru-Pro_Typing 名詞 level 1</title>
-        <meta name="description" content="Let's try TOEIC TYPING!!" />
-        <meta property="og:aaa" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <>
+        <Head>
+          <title>Yuru-Pro_Typing 名詞 level 2</title>
+          <meta name="description" content="Let's try TOEIC TYPING!!" />
+          <meta property="og:aaa" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
 
-      <div className="grid-cols-12 gap-4">
-        <h1 className="font-bold text-center text-5xl text-blue-900">
-          Level 1 <span className="text-yellow-700 text-4xl">【Regular】</span>
-        </h1>
+        <div className="grid-cols-12 gap-4">
+          <h1 className="font-bold text-center text-5xl text-blue-900">
+            Level 2 <span className="text-yellow-700 text-4xl">【Regular】</span>
+          </h1>
 
-        <p className="font-bold text-center text-2xl text-gray-500">
-          TOEIC®︎名詞コース
-        </p>
-      </div>
-      <section>
-        <div className="text-center pt-8">
-          <Image
-            src={file_path + vocabulary_data[count][2]}
-            height={200}
-            width={324}
-            alt="Sample"
-            id="pic"
-          />
-        </div>
-        <div className="text-center">
-          <p
-            className="font-bold text-center text-6xl text-gray-600 pt-1"
-            id="english_text"
-          >
-            {vocabulary_data[count][0]}
+          <p className="font-bold text-center text-2xl text-gray-500">
+            TOEIC®︎名詞コース
           </p>
-          <p
-            className="font-bold text-center text-3xl text-gray-900 pt-4"
-            id="japanese_text"
-          >
-            {vocabulary_data[count][1]}
-          </p>
-          <div className="pt-3">
-            <p>-[ {count} ]-</p>
-          </div>
-          <div className="grid  grid-cols-12 pt-3">
-            <div className="lg:col-start-4 lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
-              <button
-                onClick={clickBefore}
-                className="w-28 h-10 bg-green-700 hover:bg-green-800 text-white text-2xl px-4 rounded"
-              >
-                <div className="text-lg font-bold">←Before</div>
-              </button>
-            </div>
-            <div className="lg:col-span-2  md:col-span-2 sm:col-span-2">
-              <button
-                onClick={clickSpeak}
-                className="w-28 h-10 bg-yellow-600 hover:bg-yellow-700 text-white text-2xl px-4 rounded"
-              >
-                <div className="text-lg font-bold">Speak</div>
-              </button>
-            </div>
-            <div className="lg:col-span-2  md:col-span-2 sm:col-span-2">
-              <button
-                onClick={clickNext}
-                className="w-28 h-10 bg-blue-700 hover:bg-blue-800 text-white text-2xl px-4 rounded"
-              >
-                <div className="text-lg font-bold">Next→</div>
-              </button>
-            </div>
-          </div>
         </div>
-      </section>
-      <div className="p-12"></div>
-    </>
+        <section>
+          <div className="text-center pt-8">
+            <Image
+                src={file_path + vocabulary_data[count][2]}
+                height={200}
+                width={324}
+                alt="単語帳の画像"
+                id="pic"
+                className={styles.pic}
+            />
+          </div>
+          <div className="text-center">
+            <p
+                className="font-bold text-center text-6xl text-gray-600 pt-1"
+                id="english_text"
+            >
+              {vocabulary_data[count][0]}
+            </p>
+            <p
+                className="font-bold text-center text-3xl text-gray-900 pt-4"
+                id="japanese_text"
+            >
+              {vocabulary_data[count][1]}
+            </p>
+            <div className="pt-3">
+              <p>-[ {count} ]-</p>
+            </div>
+            <div className="grid  grid-cols-12 pt-3">
+              <div className="lg:col-start-4 lg:col-span-2 md:col-start-1 md:col-span-3 sm:col-start-1 sm:col-span-2">
+                <button
+                    onClick={clickBefore}
+                    className="w-28 h-10 bg-green-700 hover:bg-green-800 text-white text-2xl px-4 rounded"
+                >
+                  <div className="text-lg font-bold">←Before</div>
+                </button>
+              </div>
+              <div className="lg:col-span-2  md:col-span-2 sm:col-span-2">
+                <button
+                    onClick={clickSpeak}
+                    className="w-28 h-10 bg-yellow-600 hover:bg-yellow-700 text-white text-2xl px-4 rounded"
+                >
+                  <div className="text-lg font-bold">Speak</div>
+                </button>
+              </div>
+              <div className="lg:col-span-2  md:col-span-2 sm:col-span-2">
+                <button
+                    onClick={clickNext}
+                    className="w-28 h-10 bg-blue-700 hover:bg-blue-800 text-white text-2xl px-4 rounded"
+                >
+                  <div className="text-lg font-bold">Next→</div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="pt-12"><ButtonExit url='/toeic/menus/noun'/></section>
+      </>
   );
 }

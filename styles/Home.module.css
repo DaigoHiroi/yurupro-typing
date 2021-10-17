@@ -126,3 +126,11 @@
     flex-direction: column;
   }
 }
+
+.exit_icon {
+  z-index: 10;
+  position: -webkit-sticky;
+  position: fixed;
+  top: 49px;
+  left: 2px;
+}

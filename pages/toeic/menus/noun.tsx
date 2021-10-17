@@ -1,10 +1,9 @@
 import Head from "next/head";
-import Image from "next/image";
-import styles from "/styles/Home.module.css";
-import Link from "next/link";
 import MenuTitle from "components/menus/menu_title";
 import MenuList from "components/menus/menu_list";
+import GrayMenuList from "components/menus/grayMenuList";
 import React, { useState, useEffect, useCallback } from "react";
+// import IconExit from "components/iconExit";
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -23,7 +22,6 @@ export default function nounMenu() {
           <meta property="og:Yuru-Pro Typing" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-
         <section>
           <MenuTitle title={"TOEIC®︎名詞コース"} />
           <MenuList
@@ -34,9 +32,8 @@ export default function nounMenu() {
             endless1_link={"/toeic/play_noun/level_1_endless1"}
             endless2_link={"/toeic/play_noun/level_1_endless2"}
             book_link={"/toeic/play_noun/level_1_book"}
-
           />
-          <MenuList
+          <GrayMenuList
             title={"Level 2"}
             regular_link={"/toeic/play_noun/level_2_regular"}
             random_link={"/toeic/play_noun/level_2_random"}
@@ -45,7 +42,7 @@ export default function nounMenu() {
             endless2_link={"/toeic/play_noun/level_2_endless2"}
             book_link={"/toeic/play_noun/level_2_book"}
           />
-          <MenuList
+          <GrayMenuList
             title={"Level 3"}
             regular_link={"/toeic/play_noun/level_3_regular"}
             random_link={"/toeic/play_noun/level_3_random"}
@@ -54,7 +51,7 @@ export default function nounMenu() {
             endless2_link={"/toeic/play_noun/level_3_endless2"}
             book_link={"/toeic/play_noun/level_3_book"}
           />
-          <MenuList
+          <GrayMenuList
             title={"Level 4"}
             regular_link={"/toeic/play_noun/level_4_regular"}
             random_link={"/toeic/play_noun/level_4_random"}
@@ -63,9 +60,11 @@ export default function nounMenu() {
             endless2_link={"/toeic/play_noun/level_4_endless2"}
             book_link={"/toeic/play_noun/level_4_book"}
           />
-
         </section>
       </div>
+      {/*<section>*/}
+      {/*  <IconExit url="/"/>*/}
+      {/*</section>*/}
     </>
   );
 }

@@ -1,11 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
 import ButtonExit from "components/buttonExit";
 import Data from './data.json';
 import styles from 'styles/Play.module.css';
 
+//TODO bookのコンポーネント化
 export const getServerSideProps = async (context) => ({
   props: {
     layout: true, // 複数のレイアウトを切り替えたいときは 'MainLayout' などの文字列を用いる
@@ -144,10 +144,7 @@ export default function PlayBook() {
           </div>
         </div>
       </section>
-      <section>
-        <ButtonExit url='/toeic/menus/noun'/>
-      </section>
-      <div className="p-12"></div>
+      <section className="pt-12"><ButtonExit url='/toeic/menus/noun'/></section>
     </>
   );
 }

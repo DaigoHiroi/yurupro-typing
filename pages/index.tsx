@@ -3,6 +3,8 @@ import Image from "next/image";
 import styles from "styles/Home.module.css";
 import Link from "next/link";
 import CourseSelect from "components/index/templates/courseSelect";
+import Caution from "components/notice/templates/caution";
+import React from "react";
 
 export const getServerSideProps = async (context) => ({
   props: {
@@ -28,9 +30,12 @@ export default function Home() {
         <p className="font-bold text-center text-xl text-gray-500">
           英語学習超特化型タイピングサイト
         </p>
-
-
-        <CourseSelect />
+        <section>
+          <CourseSelect />
+        </section>
+        <section className="pt-8">
+          <Caution />
+        </section>
       </main>
     </div>
   );
