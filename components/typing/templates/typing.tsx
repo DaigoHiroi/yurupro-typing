@@ -228,8 +228,7 @@ export default function Typing(props) {
         <>
             <section>
                 <div className="text-center pt-8">
-                    <Image src={src} height={200} width={324} alt="EnglishTyping" className={styles.pic}/>
-                {/* quality={60}*/}
+                    <Image src={src} height={200} width={324} alt="EnglishTyping" quality={38} className={styles.pic}/>
                 </div>
                 <div className="text-center">
                     {crazyFlg ? (

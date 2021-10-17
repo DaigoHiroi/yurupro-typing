@@ -43,6 +43,7 @@ const navBar = () => {
             </span>
           </a>
         </Link>
+        {/*TODO この下必要か確認*/}
         <button
           className=' inline-flex p-3 hover:bg-gray-600 rounded lg:hidden text-white ml-auto hover:text-white outline-none'
           onClick={handleClick}
