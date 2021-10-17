@@ -141,6 +141,10 @@ export default function Typing(props) {
             setCrazyWhite("text-gray-600");
         }
         //cnt = cnt + 1;
+        //プリロード
+        vocabulary_data.forEach(function(element){
+            setSrc(file_path + element[2]);
+        });
         setCount(cnt + 1);
         setSrc(file_path + vocabulary_data[0][2]);
         setDispEnglish(vocabulary_data[0][0]);
